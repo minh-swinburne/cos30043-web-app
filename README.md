@@ -1,4 +1,4 @@
-# vue-project
+# COS30043 - Custom Web Application
 
 This template should help get you started developing with Vue 3 in Vite.
 
