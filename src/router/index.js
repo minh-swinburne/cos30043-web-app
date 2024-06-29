@@ -21,6 +21,15 @@ const router = createRouter({
       path: '/products',
       name: 'products',
       component: () => import('../views/ProductsView.vue')
+    },
+    {
+      path: '/404',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue')
+    },
+    {
+      path: '/:catchAll(.*)',
+      redirect: '/404'
     }
   ]
 })

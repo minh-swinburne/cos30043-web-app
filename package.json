@@ -12,8 +12,10 @@
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.4.47",
     "firebase": "^10.12.2",
+    "jquery": "^3.7.1",
     "vue": "^3.4.29",
-    "vue-router": "^4.3.3",
+    "vue-router": "^4.4.0",
+    "vuejs-paginate": "^2.1.0",
     "vuetify": "^3.6.10"
   },
   "devDependencies": {
