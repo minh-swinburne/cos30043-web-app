@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "johndoe123@gmail.com",
+    "phone": "123-456-7890",
+    "address": {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "zip": "12345"
+    },
+    "username": "johndoe123",
+    "password": "johnyboy123",
+    "pets": [
+      1
+    ],
+    "bio": "I am a dog lover who enjoys going on walks and playing fetch. I have a large fenced-in yard where my dog can run and play. I am looking for a new furry friend to join our family."
+  },
+  {
+    "id": 2,
+    "firstname": "Jane",
+    "lastname": "Smith",
+    "email": "janesmith@college.edu",
+    "phone": "234-567-8901",
+    "address": {
+      "street": "456 Elm St",
+      "city": "Othertown",
+      "state": "NY",
+      "zip": "23456"
+    },
+    "username": "jane_smith_88",
+    "password": "iLoveCats",
+    "pets": [
+      2,
+      3
+    ],
+    "bio": "I am a cat lover who enjoys cuddling and playing with my cats. I have a cozy apartment with plenty of toys and scratching posts for my cats to enjoy. I am looking for a new feline friend to add to our family."
+  },
+  {
+    "id": 3,
+    "firstname": "Alice",
+    "lastname": "Wonderland",
+    "email": "alicu@hotmail.net",
+    "phone": "345-678-9012",
+    "address": {
+      "street": "789 Oak St",
+      "city": "Wonderland",
+      "state": "FL",
+      "zip": "34567"
+    },
+    "username": "aliceinwonderland",
+    "password": "downtherabbithole",
+    "pets": [
+      4
+    ],
+    "bio": "I am a rabbit lover who enjoys watching my bunny hop around and munch on hay. I have a large playpen for my bunny to explore and plenty of fresh veggies for him to eat. I am looking for a new bunny friend to join our family."
+  }
+]

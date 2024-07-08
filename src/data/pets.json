@@ -1,0 +1,138 @@
+[
+  {
+    "id": 1,
+    "name": "Buddy",
+    "species": "Dog",
+    "breed": "Golden Retriever",
+    "sex": "M",
+    "age": 3,
+    "available": true,
+    "adoption_fee": "$200.00",
+    "location": "123 Main St, Anytown, USA",
+    "images": [
+      "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSxoptGUPKPhWkuBCMeBkRMLdjkCMYhxcjZzNe7FAFRqm6AkZmYqa_u3SI-E1N0Tq2VIW6Z_VIk9kwC_Y4"
+    ],
+    "description": "Buddy is a very friendly dog who loves to play fetch and go on walks. He is great with kids and other dogs. He is house trained and knows basic commands.",
+    "traits": {
+      "height": "24 inches",
+      "weight": "75 pounds",
+      "color": "Golden",
+      "coat": "Medium",
+      "life_expectancy": "10-12 years"
+    },
+    "health": {
+      "vaccinations": [
+        "Rabies",
+        "Distemper",
+        "Parvovirus",
+        "Bordetella"
+      ],
+      "deworming": [
+        "Roundworms",
+        "Hookworms",
+        "Tapeworms"
+      ],
+      "spay_neuter": false
+    }
+  },
+  {
+    "id": 2,
+    "name": "Mittens",
+    "species": "Cat",
+    "breed": "Domestic Shorthair",
+    "sex": "F",
+    "age": 2,
+    "available": true,
+    "images": [
+      "https://d3544la1u8djza.cloudfront.net/APHI/Blog/2022/02-11/gray+stripe+domestic+shortahair+tabby+cat+resting+in+a+maroon+cat+tree+bed-min.jpg",
+      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.catster.com%2Fcat-behavior%2Fshort-haired-vs-long-haired-cat%2F&psig=AOvVaw0HwHE_rkeEgY32L-BW8q_J&ust=1720531910184000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPCLp4DHl4cDFQAAAAAdAAAAABAZ"
+    ],
+    "description": "Mittens is a very sweet cat who loves to cuddle and play with toys. She is great with kids and other cats. She is litter trained and loves to be brushed.",
+    "traits": {
+      "height": "10 inches",
+      "weight": "10 pounds",
+      "color": "Gray",
+      "coat": "Short",
+      "life_expectancy": "12-15 years"
+    },
+    "health": {
+      "vaccinations": [
+        "Rabies",
+        "Feline Distemper",
+        "Feline Leukemia"
+      ],
+      "deworming": [
+        "Roundworms",
+        "Hookworms",
+        "Tapeworms"
+      ],
+      "spay_neuter": true
+    }
+  },
+  {
+    "id": 3,
+    "name": "Rocky",
+    "species": "Dog",
+    "breed": "Boxer",
+    "sex": "M",
+    "age": 5,
+    "available": false,
+    "images": [
+      "https://www.thesprucepets.com/thmb/mmBhBAEt3a3wiYrF1LApZWzcF-0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-6704721801-32a58d608fb145578158d40f1d131904.jpg",
+      "https://img-rpba.s3.ap-southeast-2.amazonaws.com/wp-content/uploads/2022/09/19175725/boxercharacteristics-1536x1024.jpg"
+    ],
+    "description": "Rocky is a very energetic dog who loves to run and play. He is great with kids and other dogs. He is house trained and knows basic commands.",
+    "traits": {
+      "height": "22 inches",
+      "weight": "70 pounds",
+      "color": "Brindle",
+      "coat": "Short",
+      "life_expectancy": "10-12 years"
+    },
+    "health": {
+      "vaccinations": [
+        "Rabies",
+        "Distemper",
+        "Parvovirus",
+        "Bordetella"
+      ],
+      "deworming": [
+        "Roundworms",
+        "Hookworms",
+        "Tapeworms"
+      ],
+      "spay_neuter": true
+    }
+  },
+  {
+    "id": 4,
+    "name": "Whiskers",
+    "species": "Other",
+    "breed": "Rabbit",
+    "sex": "F",
+    "age": 1,
+    "available": true,
+    "images": [
+      "https://preview.redd.it/kvrt71orrm621.jpg?width=1080&crop=smart&auto=webp&s=533808c733da077a0c96846faa8b18e125b0561b"
+    ],
+    "description": "Whiskers is a very friendly rabbit who loves to hop around and eat vegetables. She is great with kids and other rabbits. She is litter trained and loves to be petted.",
+    "traits": {
+      "height": "12 inches",
+      "weight": "5 pounds",
+      "color": "White",
+      "coat": "Short",
+      "life_expectancy": "5-8 years"
+    },
+    "health": {
+      "vaccinations": [
+        "Rabbit Hemorrhagic Disease",
+        "Myxomatosis"
+      ],
+      "deworming": [
+        "Roundworms",
+        "Tapeworms"
+      ],
+      "spay_neuter": false
+    }
+  }
+]

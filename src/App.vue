@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import Alert from './components/Alert.vue'
+import { mdiCheckDecagram } from '@mdi/js'
 </script>
 
 <template>
@@ -8,6 +10,16 @@ import HelloWorld from './components/HelloWorld.vue'
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
+      <Alert
+        :timeout="5000"
+        :icon="mdiCheckDecagram"
+        color="green"
+        type="success"
+        message="Success! This will be automatically dismissed in 5 seconds 🎉"
+        position="fixed"
+        location="top left"
+        closable
+      />
       <HelloWorld msg="You did it!" />
 
       <nav>
