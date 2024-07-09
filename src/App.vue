@@ -1,12 +1,55 @@
-<script setup>
+<script>
+import { useTheme } from 'vuetify'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import Alert from './components/Alert.vue'
-import { mdiCheckDecagram } from '@mdi/js'
+import Alert from './components/BaseAlert.vue'
+import { mdiWhiteBalanceSunny, mdiWeatherNight, mdiCheckDecagram } from '@mdi/js'
+
+export default {
+  data() {
+    return {
+      theme: null,
+      darkIcon: mdiWhiteBalanceSunny,
+      lightIcon: mdiWeatherNight,
+    }
+  },
+
+  created() {
+    this.theme = useTheme();
+    this.setTheme(this.getSystemTheme());
+    // console.log(this.getTheme());
+    // console.log(mdiWeatherNight);
+  },
+
+  methods: {
+    darkTheme() {
+      return this.theme.global.current.dark;
+    },
+
+    setTheme(theme) {
+      this.theme.global.name = theme;
+    },
+
+    toggleTheme() {
+      this.setTheme(this.darkTheme() ? 'light' : 'dark');
+    },
+
+    getSystemTheme() {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
+    },
+  },
+
+  components: {
+    RouterView,
+  },
+}
 </script>
 
 <template>
-  <header>
+  <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -28,9 +71,19 @@ import { mdiCheckDecagram } from '@mdi/js'
         <RouterLink to="/products">Products</RouterLink>
       </nav>
     </div>
-  </header>
+  </header> -->
 
-  <RouterView />
+  <v-app>
+    <RouterView />
+    <v-btn 
+      @click="toggleTheme" 
+      :icon="darkTheme() ? darkIcon : lightIcon"
+      :theme="darkTheme() ? 'light' : 'dark'"
+      position="fixed"
+      location="bottom left"
+      class="ma-4"
+    ></v-btn>
+  </v-app>
 </template>
 
 <style scoped>

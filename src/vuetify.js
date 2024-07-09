@@ -5,6 +5,8 @@ import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 
 const vuetify = createVuetify({
+  components,
+  directives,
   icons: {
     defaultSet: 'mdi',
     aliases,
@@ -12,8 +14,6 @@ const vuetify = createVuetify({
       mdi,
     },
   },
-  components,
-  directives,
 })
 
 export default vuetify

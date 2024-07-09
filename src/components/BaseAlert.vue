@@ -1,3 +1,25 @@
+<template>
+  <v-alert
+    :model-value="showing"
+    :type="type"
+    :color="color"
+    :icon="icon"
+    :text="message"
+    :position="position"
+    :location="location"
+    :closable="closable"
+    class="ma-md-4 ma-2"
+    elevation="2"
+  >
+    <v-progress-linear
+      :model-value="progress-5"
+      height="4"
+      location="bottom"
+      absolute
+    ></v-progress-linear>
+  </v-alert>
+</template>
+
 <script>
 export default {
   props: {
@@ -37,7 +59,7 @@ export default {
   
   data() {
     return {
-      show: true,
+      showing: true,
       progress: 100,
       interval: null,
     }
@@ -48,9 +70,9 @@ export default {
 		const step = 100 / (this.timeout / duration);
 		this.interval = setInterval(() => {
 			if (this.progress <= 0) {
-				clearInterval(this.interval);
-				console.log(this.progress);
-				this.show = false;
+				this.showing = false;
+        this.$emit('close');
+        clearInterval(this.interval);
 			}
 			this.progress -= step;
 		}, duration);
@@ -59,39 +81,8 @@ export default {
   beforeUnmount() {
     clearInterval(this.interval);
   },
-
-  watch: {
-    show() {
-      if (!this.show) {
-        this.$emit('close');
-        clearInterval(this.interval);
-      }
-    },
-  },
 }
 </script>
-
-<template>
-  <v-alert
-    :model-value="show"
-    :type="type"
-    :color="color"
-    :icon="icon"
-    :text="message"
-    :position="position"
-    :location="location"
-    :closable="closable"
-    class="ma-md-4 ma-2"
-    elevation="2"
-  >
-    <v-progress-linear
-      :model-value="progress-5"
-      height="4"
-      location="bottom"
-      absolute
-    ></v-progress-linear>
-  </v-alert>
-</template>
 
 <style scoped>
 .v-alert {

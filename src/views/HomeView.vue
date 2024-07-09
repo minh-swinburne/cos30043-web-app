@@ -1,9 +1,11 @@
 <script setup>
+import AppBar from '../components/BaseAppBar.vue'
 import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
-  <main>
+  <AppBar />
+  <v-main>
     <TheWelcome />
-  </main>
+  </v-main>
 </template>

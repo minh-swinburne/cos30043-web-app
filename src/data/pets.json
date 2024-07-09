@@ -43,6 +43,8 @@
     "sex": "F",
     "age": 2,
     "available": true,
+    "adoption_fee": "$100.00",
+    "location": "234 Oak St, Anytown, USA",
     "images": [
       "https://d3544la1u8djza.cloudfront.net/APHI/Blog/2022/02-11/gray+stripe+domestic+shortahair+tabby+cat+resting+in+a+maroon+cat+tree+bed-min.jpg",
       "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.catster.com%2Fcat-behavior%2Fshort-haired-vs-long-haired-cat%2F&psig=AOvVaw0HwHE_rkeEgY32L-BW8q_J&ust=1720531910184000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPCLp4DHl4cDFQAAAAAdAAAAABAZ"
@@ -77,6 +79,8 @@
     "sex": "M",
     "age": 5,
     "available": false,
+    "adoption_fee": "$150.00",
+    "location": "456 Elm St, Anytown, USA",
     "images": [
       "https://www.thesprucepets.com/thmb/mmBhBAEt3a3wiYrF1LApZWzcF-0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-6704721801-32a58d608fb145578158d40f1d131904.jpg",
       "https://img-rpba.s3.ap-southeast-2.amazonaws.com/wp-content/uploads/2022/09/19175725/boxercharacteristics-1536x1024.jpg"
@@ -112,6 +116,8 @@
     "sex": "F",
     "age": 1,
     "available": true,
+    "adoption_fee": "$50.00",
+    "location": "567 Pine St, Anytown, USA",
     "images": [
       "https://preview.redd.it/kvrt71orrm621.jpg?width=1080&crop=smart&auto=webp&s=533808c733da077a0c96846faa8b18e125b0561b"
     ],

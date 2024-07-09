@@ -9,6 +9,10 @@
   --vt-c-black-mute: #282828;
 
   --vt-c-indigo: #2c3e50;
+  --vt-c-blue: #3498db;
+  --vt-c-blue-trans: #3498db33;
+  --vt-c-dark-blue: #1a5091;
+  --vt-c-green: #00bd7e;
 
   --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
   --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
@@ -23,6 +27,7 @@
 
 /* semantic color variables for this project */
 :root {
+  --color-theme: var(--vt-c-blue);
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
@@ -32,6 +37,10 @@
 
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
+
+  --color-link: var(--vt-c-blue);
+  --color-dark-link: var(--vt-c-dark-blue);
+  --color-link-background: var(--vt-c-blue-trans);
 
   --section-gap: 160px;
 }

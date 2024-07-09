@@ -12,4 +12,4 @@ app.use(router)
 app.use(vuetify)
 app.mount('#app')
 
-console.log('Hello from main.js')
+// console.log('Hello from main.js')
