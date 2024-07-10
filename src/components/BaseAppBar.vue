@@ -9,3 +9,9 @@
 
 <script setup>
 </script>
+
+<style scoped>
+/* .v-app-bar {
+  transition: background 0.2s;
+} */
+</style>

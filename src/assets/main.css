@@ -1,17 +1,17 @@
 @import './base.css';
 
 .v-application {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
+  /* transition: background 0.2s; */
 }
 
-a,
-.green {
+a, .theme {
   text-decoration: none;
   color: var(--color-link);
-  transition: 0.4s;
+  /* transition: 0.4s; */
   padding: 3px;
 }
 
