@@ -1,8 +1,7 @@
 <script>
 import { useTheme } from 'vuetify'
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import Alert from './components/BaseAlert.vue'
+import Alert from './components/AppAlert.vue'
 import { mdiWhiteBalanceSunny, mdiWeatherNight, mdiCheckDecagram } from '@mdi/js'
 
 export default {
@@ -16,9 +15,7 @@ export default {
 
   created() {
     this.theme = useTheme();
-    this.setTheme(this.getSystemTheme());
-    // console.log(this.getTheme());
-    // console.log(mdiWeatherNight);
+    // console.log(this.theme.global.current);
   },
 
   methods: {
@@ -26,19 +23,8 @@ export default {
       return this.theme.global.current.dark;
     },
 
-    setTheme(theme) {
-      this.theme.global.name = theme;
-    },
-
     toggleTheme() {
-      this.setTheme(this.darkTheme() ? 'light' : 'dark');
-    },
-
-    getSystemTheme() {
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-      return 'light';
+      this.theme.global.name = this.darkTheme() ? 'light' : 'dark';
     },
   },
 
@@ -87,65 +73,32 @@ export default {
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+  .v-btn {
+    z-index: 9999;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
+  .wrapper {
     display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
   }
 
   nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
   }
-}
+
+  .logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 40vmin;
+    pointer-events: none;
+  }
+
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 </style>

@@ -1,26 +1,51 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import MainView from '../views/MainView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      name: 'main',
+      component: MainView,
+      children: [
+        {
+          path: '',
+          redirect: 'home'
+        },
+        {
+          path: 'home',
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import('../views/MainHomeView.vue')
+        },
+        {
+          path: 'about',
+          component: () => import('../views/MainAboutView.vue')
+        },
+        {
+          path: 'products',
+          component: () => import('../views/MainProductsView.vue')
+        },
+      ]
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    },
-    {
-      path: '/products',
-      name: 'products',
-      component: () => import('../views/ProductsView.vue')
+      path: '/user/:username',
+      name: 'user',
+      component: () => import('../views/UserView.vue'),
+      children: [
+        {
+          path: 'profile',
+          name: 'user-profile',
+          component: () => import('../views/UserProfileView.vue')
+        },
+        {
+          path: 'settings',
+          name: 'user-settings',
+          component: () => import('../views/UserSettingsView.vue')
+        }
+      ]
     },
     {
       path: '/404',

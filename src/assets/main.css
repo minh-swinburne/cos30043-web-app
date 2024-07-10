@@ -5,7 +5,7 @@
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
-  /* transition: background 0.2s; */
+  transition: background 0.4s;
 }
 
 a, .theme {
@@ -15,17 +15,18 @@ a, .theme {
   padding: 3px;
 }
 
-@media (hover: hover) {
+/* @media (hover: hover) {
   a:hover {
     background-color: var(--color-link-background);
   }
-}
+} */
 
 @media (min-width: 1024px) {
-  body {
+  /* body {
     display: flex;
     place-items: center;
-  }
+    width: 100%;
+  } */
 
   .v-application {
     display: grid;
