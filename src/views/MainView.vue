@@ -1,19 +1,7 @@
 <template>
-  <AppBar />
-  <AppNavigation :items="items" />
+  <AppBar @toggleNav="toggleNav" />
+  <AppNavigation :items="items" v-model="drawer"/>
   <v-main>
-    <!-- <v-container>
-      <v-row>
-        <v-col cols="12">
-          <v-card>
-            <v-card-title>{{ title }}</v-card-title>
-            <v-card-text>
-              Welcome to the Home page
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container> -->
     <RouterView />
   </v-main>
 </template>
@@ -29,9 +17,14 @@ export default {
     AppBar,
     AppNavigation,
   },
+  methods: {
+    toggleNav() {
+      this.drawer = !this.drawer;
+    },
+  },
   data() {
     return {
-      title: 'Home',
+      drawer: true,
       items: [
         {
           title: 'Home', 
@@ -60,7 +53,7 @@ export default {
               title: 'About', 
               value: 4,
               props: {
-                prependIcon: mdiClose,
+                prependIcon: mdiCheck,
                 to: '/about',
               }
             },

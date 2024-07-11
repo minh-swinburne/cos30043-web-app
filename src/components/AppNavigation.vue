@@ -18,6 +18,8 @@ export default {
 
 <style scoped>
 .v-navigation-drawer {
-  transition: background 0.4s;
+  transition:
+    transform 0.2s,
+    background 0.4s;
 }
 </style>

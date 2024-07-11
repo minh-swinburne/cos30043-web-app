@@ -67,7 +67,7 @@ export default {
       :theme="darkTheme() ? 'light' : 'dark'"
       position="fixed"
       location="bottom left"
-      class="ma-4"
+      class="ma-md-7 ma-4"
     ></v-btn>
   </v-app>
 </template>
