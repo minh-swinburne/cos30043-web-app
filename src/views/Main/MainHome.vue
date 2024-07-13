@@ -5,7 +5,7 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <v-card>
+        <v-card elevation="5">
           <v-card-title>Home</v-card-title>
           <v-card-text>
             Welcome to the Home page

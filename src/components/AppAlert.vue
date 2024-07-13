@@ -12,6 +12,7 @@
     elevation="2"
   >
     <v-progress-linear
+      v-if="timeout > 0"
       :model-value="progress-5"
       height="4"
       location="bottom"
@@ -20,72 +21,70 @@
   </v-alert>
 </template>
 
-<script>
-export default {
-  props: {
-    message: {
-      type: String,
-      default: '',
-    },
-    type: {
-      type: String,
-      default: 'info',
-    },
-    color: {
-      type: String,
-      default: undefined,
-    },
-    icon: {
-      type: String,
-      default: null,
-    },
-    position: {
-      type: String,
-      default: 'fixed',
-    },
-    location: {
-      type: String,
-      default: 'top center',
-    },
-    closable: {
-      type: Boolean,
-      default: true,
-    },
-    timeout: {
-      type: Number,
-      default: 5000,
-    },
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+const showing = ref(true)
+const progress = ref(100)
+const interval = ref(null)
+
+const emit = defineEmits(['close'])
+const $props = defineProps({
+  message: {
+    type: String,
+    default: '',
   },
-  
-  data() {
-    return {
-      showing: true,
-      progress: 100,
-      interval: null,
+  type: {
+    type: String,
+    default: 'info',
+  },
+  color: {
+    type: String,
+    default: undefined,
+  },
+  icon: {
+    type: String,
+    default: null,
+  },
+  position: {
+    type: String,
+    default: 'fixed',
+  },
+  location: {
+    type: String,
+    default: 'top right',
+  },
+  closable: {
+    type: Boolean,
+    default: true,
+  },
+  timeout: {
+    type: Number,
+    default: 5000,
+  },
+})
+
+onMounted(() => {
+  if ($props.timeout <= 0) return;
+  const duration = 50;
+  const step = 100 / ($props.timeout / duration);
+  interval.value = setInterval(() => {
+    if (progress.value <= 0) {
+      showing.value = false;
+      emit('close');
+      clearInterval(interval.value);
     }
-  },
+    progress.value -= step;
+  }, duration);
+})
 
-  mounted() {
-    const duration = 50;
-		const step = 100 / (this.timeout / duration);
-		this.interval = setInterval(() => {
-			if (this.progress <= 0) {
-				this.showing = false;
-        this.$emit('close');
-        clearInterval(this.interval);
-			}
-			this.progress -= step;
-		}, duration);
-  },
-
-  beforeUnmount() {
-    clearInterval(this.interval);
-  },
-}
+onBeforeUnmount(() => {
+  clearInterval(interval.value);
+})
 </script>
 
 <style scoped>
 .v-alert {
-  z-index: 1000;
+  z-index: 9999;
 }
 </style>
