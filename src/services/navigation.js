@@ -1,4 +1,4 @@
-import { mdiHome, mdiTools, mdiCheck, mdiClose, mdiPost } from '@mdi/js'
+import { mdiHome, mdiTools, mdiCheck, mdiClose, mdiPost, mdiAlert } from '@mdi/js'
 
 const navItems = [
   {
@@ -15,6 +15,14 @@ const navItems = [
     props: {
       prependIcon: mdiPost,
       to: '/blogs',
+    }
+  },
+  {
+    title: '404',
+    value: 7,
+    props: {
+      prependIcon: mdiAlert,
+      to: '/404',
     }
   },
   { 
