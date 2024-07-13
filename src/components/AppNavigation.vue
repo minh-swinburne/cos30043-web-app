@@ -1,7 +1,8 @@
 <template>
-  <v-navigation-drawer 
-    elevation="5" 
-    :rail="collapsed"
+  <v-navigation-drawer
+    :model-value="showing"
+    :rail="!(expanded || isSmallScreen)"
+    elevation="5"
   >
     <v-list 
       nav slim 
@@ -13,64 +14,64 @@
   </v-navigation-drawer>
 </template>
 
-<script>
-export default {
-  props: {
-    items: {
-      type: Array,
-      default: () => [],
-    },
-    collapsed: {
-      type: Boolean,
-      default: false,
-    },
+<script setup>
+import { ref, watch, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useMediaQuery } from '@vueuse/core'
+
+const $route = useRoute()
+const $props = defineProps({
+  expanded: {
+    type: Boolean,
+    default: false,
   },
-
-  watch: {
-    collapsed() {
-      if (this.collapsed) {
-        this.opened = [];
-      }
-      else {        
-        this.openAncestors(this.$route.path);
-      }
-    },
+  items: {
+    type: Array,
+    default: () => [],
   },
+})
 
-  methods: {
-    findItem(item, path) {
-      if (item.children) {
-        for (const child of item.children) {
-          if (this.findItem(child, path)) {
-            this.opened.push(item.value);
-            return true;
-          }
-        }
+const isSmallScreen = useMediaQuery('(max-width: 1024px)')
+const opened = ref([])
+const showing = computed(() => $props.expanded || !isSmallScreen.value)
+
+function findItem(item, path) {
+  if (item.children) {
+    for (const child of item.children) {
+      if (findItem(child, path)) {
+        opened.value.push(item.value)
+        return true
       }
-      return item.props.to === path;
-    },
-
-    openAncestors(path) {
-      for (const item of this.items) {
-        if (this.findItem(item, path)) {
-          return;
-        }
-      }
-    },
-  },
-
-  data() {
-    return {
-      opened: [],
     }
-  },
+  }
+  return item.props.to === path
 }
+
+function openAncestors(path) {
+  for (const item of $props.items) {
+    if (findItem(item, path)) {
+      return
+    }
+  }
+}
+
+watch(() => $props.expanded, (expanded) => {
+  if (!isSmallScreen) {
+    if (expanded) {
+      openAncestors($route.path)
+    }
+    else {
+      opened.value = []
+    }
+  }
+})
 </script>
 
 <style scoped>
 .v-navigation-drawer {
   transition:
     width 0.2s,
+    transform 0.2s,
     background 0.4s;
 }
 .v-navigation-drawer--rail {

@@ -20,7 +20,7 @@
 import { ref } from 'vue'
 import { RouterView } from 'vue-router'
 import { useTheme } from 'vuetify'
-import AppAlert from './components/AppAlert.vue'
+// import AppAlert from './components/AppAlert.vue'
 import { mdiWhiteBalanceSunny, mdiWeatherNight } from '@mdi/js'
 
 const theme = ref(useTheme());

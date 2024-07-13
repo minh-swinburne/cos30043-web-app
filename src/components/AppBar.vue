@@ -2,8 +2,8 @@
   <v-app-bar>
     <v-app-bar-nav-icon @click.prevent="$emit('toggleNav')" />
     <v-app-bar-title>
-      <RouterLink class="text-primary font-weight-bold" to="/">
-        <slot></slot>
+      <RouterLink class="text-primary font-weight-bold d-flex align-center" to="/">
+        <slot name="title"></slot>
       </RouterLink>
     </v-app-bar-title>
   </v-app-bar>
@@ -17,5 +17,9 @@ import { RouterLink } from 'vue-router';
 .v-app-bar {
   padding: 0 3px;
   transition: background 0.4s;
+}
+.v-app-bar-title {
+  cursor: pointer;
+  margin-left: 5px;
 }
 </style>

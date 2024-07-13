@@ -4,13 +4,9 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 import colors from 'vuetify/util/colors'
+import { useMediaQuery } from '@vueuse/core'
 
-function systemTheme() {
-  if (!window.matchMedia) return null
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light'
-}
+const isPreferredDark = useMediaQuery('(prefers-color-scheme: dark)')
 
 const vuetify = createVuetify({
   components,
@@ -23,12 +19,12 @@ const vuetify = createVuetify({
     },
   },
   theme: {
-    defaultTheme: systemTheme(),
+    defaultTheme: isPreferredDark.value ? 'dark' : 'light',
     themes: {
       light: {
         dark: false,
         colors: {
-          primary: colors.deepPurple.base,
+          // primary: colors.deepPurple.base,
           // secondary: colors.deepOrange.darken3,
           // accent: colors.blue.accent3,
           error: colors.red.base,
@@ -40,7 +36,7 @@ const vuetify = createVuetify({
       dark: {
         dark: true,
         colors: {
-          primary: colors.deepPurple.lighten3,
+          // primary: colors.deepPurple.lighten3,
           // secondary: colors.deepOrange.darken3,
           // accent: colors.blue.accent3,
           error: colors.red.base,

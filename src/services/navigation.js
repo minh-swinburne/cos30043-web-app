@@ -9,6 +9,14 @@ const navItems = [
       to: '/home',
     }
   },
+  {
+    title: 'Blogs',
+    value: 6,
+    props: {
+      prependIcon: mdiPost,
+      to: '/blogs',
+    }
+  },
   { 
     title: 'Actions',
     value: 2,
@@ -58,14 +66,6 @@ const navItems = [
         ],
       }
     ],
-  },
-  {
-    title: 'Blogs',
-    value: 6,
-    props: {
-      prependIcon: mdiPost,
-      to: '/blogs',
-    }
   },
 ];
 

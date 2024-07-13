@@ -2,11 +2,12 @@
   <v-data-iterator
     :items="blogs"
     :items-per-page="3"
+    :loading="loading"
   >
     <template #header>
       <h1 class="text-h5 font-weight-bold d-flex justify-space-between mb-4 align-center">
         <div class="text-truncate">
-          Recommended
+          {{ name }}
         </div>
 
         <div class="d-flex align-center">
@@ -32,7 +33,7 @@
             cols="auto"
             md="4"
           >
-            <BlogItem :blog="blog" />
+            <BlogListItem :blog="blog" />
           </v-col>
         </v-row>
       </v-container>
@@ -83,25 +84,55 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router';
-import BlogItem from './BlogItem.vue'
+import axios from 'axios'
+import BlogListItem from './BlogListItem.vue'
 import { mdiArrowLeft, mdiArrowRight } from '@mdi/js'
 
 const $router = useRouter()
 
 const $props = defineProps({
-  blogs: {
-    type: Array,
+  name: String,
+  source: {
+    type: String,
     required: true
   }
 })
 
+const blogs = ref([])
 const loading = ref(true)
+
+getBlogs()
 
 function seeAll() {
   $router.push('/blogs')
 }
 
-watch(() => $props.blogs, (newVal) => {
+function getBlogs() {
+  console.log($props.source)
+  axios.get($props.source)
+    .then(response => {
+      let articles = response.data.articles.filter(article => article.urlToImage != null && article.title != "[Removed]")
+      // console.log(articles)
+      let id = 0
+      for (const article of articles) {
+        // console.log(article)
+        blogs.value.push({
+          id: id,
+          title: article.title,
+          subtitle: article.description,
+          // url: article.url,
+          imageUrl: article.urlToImage,
+        })
+        id++
+      }
+      loading.value = false
+    })
+    .catch(error => {
+      console.log(error)
+    });
+}
+
+watch(() => blogs, (newVal) => {
   if (newVal.length > 0) {
     loading.value = false
   }

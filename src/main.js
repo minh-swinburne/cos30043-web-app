@@ -1,10 +1,11 @@
 import './assets/main.css'
 
 import { createApp } from 'vue'
-import App from './App.vue'
 import router from './plugins/router'
 import vuetify from './plugins/vuetify'
 import firebase from './plugins/firebase'
+
+import App from './App.vue'
 
 const app = createApp(App)
 
