@@ -1,9 +1,10 @@
 <template>
   <v-app-bar>
-    <v-app-bar-nav-icon @click.prevent="$emit('toggleNav')" />
+    <v-app-bar-nav-icon @click.prevent="$emit('toggle')" />
     <v-app-bar-title>
       <RouterLink class="text-primary font-weight-bold d-flex align-center" to="/">
-        <slot name="title"></slot>
+        <v-icon :icon="mdiPaw" class="me-2"></v-icon>
+        <span>Application</span>
       </RouterLink>
     </v-app-bar-title>
   </v-app-bar>
@@ -11,6 +12,7 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
+import { mdiPaw } from '@mdi/js'
 </script>
 
 <style scoped>

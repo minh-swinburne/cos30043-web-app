@@ -32,6 +32,7 @@
             :key="blog.id"
             cols="auto"
             md="4"
+            sm="6"
           >
             <BlogListItem :blog="blog" />
           </v-col>
@@ -70,6 +71,7 @@
           :key="n"
           cols="auto"
           md="4"
+          sm="6"
         >
           <v-skeleton-loader
             class="border"

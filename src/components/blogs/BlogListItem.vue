@@ -49,7 +49,7 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router';
-import AppCard from '@/components/AppCard.vue'
+import AppCard from '@/components/base/BaseCard.vue'
 import { mdiPaw } from '@mdi/js'
 
 const $props = defineProps({

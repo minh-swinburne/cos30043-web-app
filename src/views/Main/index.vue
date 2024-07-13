@@ -1,13 +1,8 @@
 <template>
-  <AppBar @toggleNav="toggleNav">\
-    <template #title>
-      <v-icon :icon="mdiPaw" class="me-2"></v-icon>
-      Application
-    </template>
-  </AppBar>
+  <AppBar @toggle="toggleNav" />
   <AppNavigation 
     :items="navItems" 
-    :expanded="drawer" 
+    :expanded="drawer"
     @open="drawer=true" 
   />
   <v-main>
@@ -22,9 +17,8 @@ import { useMediaQuery } from '@vueuse/core'
 import AppBar from '@/components/AppBar.vue'
 import AppNavigation from '@/components/AppNavigation.vue'
 import navItems from '@/services/navigation'
-import { mdiPaw } from '@mdi/js'
 
-const isSmallScreen = useMediaQuery('(max-width: 600px)')
+const isSmallScreen = useMediaQuery('(max-width: 1024px)')
 const drawer = ref(!isSmallScreen.value)
 
 function toggleNav() {

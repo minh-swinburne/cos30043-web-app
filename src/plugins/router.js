@@ -14,15 +14,17 @@ const router = createRouter({
         {
           path: '',
           name: 'root',
-          redirect: 'home'
+          redirect: 'home',
         },
         {
           path: 'home',
-          component: () => import('@/views/Main/HomeView.vue')
+          component: () => import('@/views/Main/HomeView.vue'),
+          meta: { title: 'Home - PetPawPal' },
         },
         {
           path: 'blogs',
-          component: () => import('@/views/Main/BlogsView.vue')
+          component: () => import('@/views/Main/BlogsView.vue'),
+          meta: { title: 'Blogs - PetPawPal' },
         },
         {
           path: 'about',
@@ -31,6 +33,12 @@ const router = createRouter({
         {
           path: 'products',
           component: () => import('@/views/Main/MainProducts.vue')
+        },
+        {
+          path: '/404',
+          name: 'not-found',
+          component: () => import('@/views/Main/NotFoundView.vue'),
+          meta: { title: '404 - PetPawPal' },
         },
       ]
     },
@@ -73,15 +81,15 @@ const router = createRouter({
       ]
     },
     {
-      path: '/404',
-      name: 'not-found',
-      component: () => import('@/views/NotFound.vue')
-    },
-    {
       path: '/:catchAll(.*)',
       redirect: '/404'
     }
   ]
+})
+
+const DEFAULT_TITLE = 'PetPawPal | COS30043 Custom Web Application'
+router.afterEach((to, from) => {
+  document.title = to.meta.title || DEFAULT_TITLE
 })
 
 export default router
