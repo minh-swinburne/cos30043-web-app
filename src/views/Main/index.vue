@@ -14,8 +14,9 @@
 import { ref } from 'vue'
 import { RouterView } from 'vue-router'
 import { useMediaQuery } from '@vueuse/core'
-import AppBar from '@/components/AppBar.vue'
-import AppNavigation from '@/components/AppNavigation.vue'
+
+import AppBar from '@/components/AppBar'
+import AppNavigation from '@/components/AppNavigation'
 import navItems from '@/services/navigation'
 
 const isSmallScreen = useMediaQuery('(max-width: 1024px)')

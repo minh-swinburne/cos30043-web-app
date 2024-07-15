@@ -28,7 +28,7 @@ const showing = ref(true)
 const progress = ref(100)
 const interval = ref(null)
 
-const emit = defineEmits(['close'])
+const $emit = defineEmits(['close'])
 const $props = defineProps({
   message: {
     type: String,
@@ -71,7 +71,7 @@ onMounted(() => {
   interval.value = setInterval(() => {
     if (progress.value <= 0) {
       showing.value = false;
-      emit('close');
+      $emit('close');
       clearInterval(interval.value);
     }
     progress.value -= step;

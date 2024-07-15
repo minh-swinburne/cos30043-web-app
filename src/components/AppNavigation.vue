@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer
     :model-value="showing"
-    :rail="!(expanded || isSmallScreen)"
+    :rail="!(expanded || mobile)"
     elevation="5"
   >
     <v-list 
@@ -17,8 +17,9 @@
 <script setup>
 import { ref, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useMediaQuery } from '@vueuse/core'
+import { useDisplay } from 'vuetify'
 
+const { mobile } = useDisplay()
 const $route = useRoute()
 const $props = defineProps({
   expanded: {
@@ -31,9 +32,8 @@ const $props = defineProps({
   },
 })
 
-const isSmallScreen = useMediaQuery('(max-width: 1024px)')
 const opened = ref([])
-const showing = computed(() => $props.expanded || !isSmallScreen.value)
+const showing = computed(() => $props.expanded || !mobile.value)
 
 function findItem(item, path) {
   if (item.children) {
@@ -56,7 +56,7 @@ function openAncestors(path) {
 }
 
 watch(() => $props.expanded, (expanded) => {
-  if (!isSmallScreen) {
+  if (!mobile.value) {
     if (expanded) {
       openAncestors($route.path)
     }

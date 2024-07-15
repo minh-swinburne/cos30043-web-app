@@ -1,4 +1,4 @@
-class BlogItem {
+class PostItem {
   constructor(id, title, subtitle, image) {
     this.id = id
     this.title = title
@@ -7,4 +7,4 @@ class BlogItem {
   }
 }
 
-export default BlogItem;
+export default PostItem;

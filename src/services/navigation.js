@@ -1,4 +1,7 @@
-import { mdiHome, mdiTools, mdiCheck, mdiClose, mdiPost, mdiAlert } from '@mdi/js'
+import { 
+  mdiHome, mdiTools, mdiCheck, mdiClose, 
+  mdiPost, mdiAlert, mdiPaw, mdiConnection
+} from '@mdi/js'
 
 const navItems = [
   {
@@ -10,31 +13,47 @@ const navItems = [
     }
   },
   {
-    title: 'Blogs',
-    value: 6,
+    title: 'Posts',
+    value: 2,
     props: {
       prependIcon: mdiPost,
-      to: '/blogs',
+      to: '/posts',
+    }
+  },
+  {
+    title: 'Pets',
+    value: 3,
+    props: {
+      prependIcon: mdiPaw,
+      to: '/pets',
     }
   },
   {
     title: '404',
-    value: 7,
+    value: 4,
     props: {
       prependIcon: mdiAlert,
       to: '/404',
     }
   },
+  {
+    title: 'Offline',
+    value: 5,
+    props: {
+      prependIcon: mdiConnection,
+      to: '/offline',
+    }
+  },
   { 
     title: 'Actions',
-    value: 2,
+    value: 6,
     props: {
       prependIcon: mdiTools,
     },
     children: [
       { 
         title: 'Products', 
-        value: 3,
+        value: 7,
         props: {
           prependIcon: mdiCheck,
           to: '/products',
@@ -42,14 +61,14 @@ const navItems = [
       },
       {
         title: 'More',
-        value: 4,
+        value: 8,
         props: {
           prependIcon: mdiClose,
         },
         children: [
           { 
             title: 'About', 
-            value: 5,
+            value: 9,
             props: {
               prependIcon: mdiCheck,
               to: '/about',

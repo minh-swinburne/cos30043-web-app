@@ -1,0 +1,284 @@
+{
+  "currentRoute": {
+      "__v_isShallow": true,
+      "dep": {},
+      "__v_isRef": true,
+      "_rawValue": {
+          "fullPath": "/posts",
+          "path": "/posts",
+          "query": {},
+          "hash": "",
+          "params": {},
+          "matched": [
+              {
+                  "path": "/",
+                  "meta": {},
+                  "props": {
+                      "default": false
+                  },
+                  "children": [
+                      {
+                          "path": "",
+                          "name": "root",
+                          "redirect": "home"
+                      },
+                      {
+                          "path": "home",
+                          "meta": {
+                              "title": "Home | undefined"
+                          }
+                      },
+                      {
+                          "path": "posts",
+                          "meta": {
+                              "title": "Posts | undefined"
+                          }
+                      },
+                      {
+                          "path": "404",
+                          "name": "not-found",
+                          "meta": {
+                              "title": "404 | undefined"
+                          }
+                      },
+                      {
+                          "path": "offline",
+                          "name": "offline",
+                          "meta": {
+                              "title": "Offline | undefined"
+                          }
+                      }
+                  ],
+                  "instances": {
+                      "default": {}
+                  },
+                  "leaveGuards": {},
+                  "updateGuards": {},
+                  "enterCallbacks": {},
+                  "components": {
+                      "default": {
+                          "__name": "index",
+                          "__hmrId": "ac035e89",
+                          "__file": "E:/Tynof/Projects/cos30043-webapp/frontend/src/views/Main/index.vue"
+                      }
+                  }
+              },
+              {
+                  "path": "/posts",
+                  "meta": {
+                      "title": "Posts | undefined"
+                  },
+                  "props": {
+                      "default": false
+                  },
+                  "children": [],
+                  "instances": {
+                      "default": {}
+                  },
+                  "leaveGuards": {},
+                  "updateGuards": {},
+                  "enterCallbacks": {},
+                  "components": {
+                      "default": {
+                          "__name": "PostsFeedView",
+                          "__hmrId": "6e7c2629",
+                          "__file": "E:/Tynof/Projects/cos30043-webapp/frontend/src/views/Main/PostsFeedView.vue"
+                      }
+                  }
+              }
+          ],
+          "meta": {
+              "title": "Posts | undefined"
+          },
+          "href": "/posts"
+      },
+      "_value": {
+          "fullPath": "/posts",
+          "path": "/posts",
+          "query": {},
+          "hash": "",
+          "params": {},
+          "matched": [
+              {
+                  "path": "/",
+                  "meta": {},
+                  "props": {
+                      "default": false
+                  },
+                  "children": [
+                      {
+                          "path": "",
+                          "name": "root",
+                          "redirect": "home"
+                      },
+                      {
+                          "path": "home",
+                          "meta": {
+                              "title": "Home | undefined"
+                          }
+                      },
+                      {
+                          "path": "posts",
+                          "meta": {
+                              "title": "Posts | undefined"
+                          }
+                      },
+                      {
+                          "path": "404",
+                          "name": "not-found",
+                          "meta": {
+                              "title": "404 | undefined"
+                          }
+                      },
+                      {
+                          "path": "offline",
+                          "name": "offline",
+                          "meta": {
+                              "title": "Offline | undefined"
+                          }
+                      }
+                  ],
+                  "instances": {
+                      "default": {}
+                  },
+                  "leaveGuards": {},
+                  "updateGuards": {},
+                  "enterCallbacks": {},
+                  "components": {
+                      "default": {
+                          "__name": "index",
+                          "__hmrId": "ac035e89",
+                          "__file": "E:/Tynof/Projects/cos30043-webapp/frontend/src/views/Main/index.vue"
+                      }
+                  }
+              },
+              {
+                  "path": "/posts",
+                  "meta": {
+                      "title": "Posts | undefined"
+                  },
+                  "props": {
+                      "default": false
+                  },
+                  "children": [],
+                  "instances": {
+                      "default": {}
+                  },
+                  "leaveGuards": {},
+                  "updateGuards": {},
+                  "enterCallbacks": {},
+                  "components": {
+                      "default": {
+                          "__name": "PostsFeedView",
+                          "__hmrId": "6e7c2629",
+                          "__file": "E:/Tynof/Projects/cos30043-webapp/frontend/src/views/Main/PostsFeedView.vue"
+                      }
+                  }
+              }
+          ],
+          "meta": {
+              "title": "Posts | undefined"
+          },
+          "href": "/posts"
+      }
+  },
+  "listening": true,
+  "options": {
+      "history": {
+          "location": "/posts",
+          "base": "",
+          "state": {
+              "back": "/home",
+              "current": "/posts",
+              "forward": null,
+              "replaced": true,
+              "position": 5,
+              "scroll": {
+                  "left": 0,
+                  "top": 0
+              }
+          }
+      },
+      "routes": [
+          {
+              "path": "/",
+              "children": [
+                  {
+                      "path": "",
+                      "name": "root",
+                      "redirect": "home"
+                  },
+                  {
+                      "path": "home",
+                      "meta": {
+                          "title": "Home | undefined"
+                      }
+                  },
+                  {
+                      "path": "posts",
+                      "meta": {
+                          "title": "Posts | undefined"
+                      }
+                  },
+                  {
+                      "path": "404",
+                      "name": "not-found",
+                      "meta": {
+                          "title": "404 | undefined"
+                      }
+                  },
+                  {
+                      "path": "offline",
+                      "name": "offline",
+                      "meta": {
+                          "title": "Offline | undefined"
+                      }
+                  }
+              ]
+          },
+          {
+              "path": "/auth",
+              "name": "auth",
+              "children": [
+                  {
+                      "path": "/register",
+                      "name": "register",
+                      "meta": {
+                          "title": "Register | undefined"
+                      }
+                  },
+                  {
+                      "path": "/login",
+                      "name": "login",
+                      "meta": {
+                          "title": "Login | undefined"
+                      }
+                  }
+              ]
+          },
+          {
+              "path": "/pets",
+              "name": "pets"
+          },
+          {
+              "path": "/user/:username",
+              "name": "user",
+              "children": [
+                  {
+                      "path": "profile",
+                      "name": "user-profile"
+                  },
+                  {
+                      "path": "settings",
+                      "name": "user-settings"
+                  }
+              ]
+          },
+          {
+              "path": "/:catchAll(.*)",
+              "redirect": "/404"
+          }
+      ]
+  },
+  "__hasDevtools": true
+}

@@ -11,6 +11,9 @@ const isPreferredDark = useMediaQuery('(prefers-color-scheme: dark)')
 const vuetify = createVuetify({
   components,
   directives,
+  display: {
+    mobileBreakpoint: 'sm',
+  },
   icons: {
     defaultSet: 'mdi',
     aliases,

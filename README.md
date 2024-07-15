@@ -1,4 +1,4 @@
-# COS30043 - Custom Web Application
+# OS30043 - Custom Web Application
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -27,3 +27,7 @@ npm run dev
 ```sh
 npm run build
 ```
+
+Image:
+![Alt text](./public/happy.png "Happy Dog")
+![Alt text](./public/error.png "Error")

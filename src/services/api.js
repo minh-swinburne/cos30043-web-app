@@ -1,13 +1,35 @@
+import { set } from '@vueuse/core';
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'https://your-firebase-app.web.app/api',
+  baseURL: './src/data',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
 export default {
+  async getPosts(source, limit=0) {
+    const params = {}
+    if (limit > 0) {
+      params.per_page = limit
+    }
+    return apiClient.get(source, { params }).then(await new Promise( (resolve) => {setTimeout(resolve, 1000)}));
+    // setTimeout(() => {
+    //   return response.data;
+    // }, 1000);
+    // console.log(response.data);
+    // throw new Error('Not implemented');
+  },
+  getUser(id) {
+    // return apiClient.get(`/users/${id}`);
+    return apiClient.get('/users.json', {
+      params: {
+        id,
+      },
+    });
+    // return response.data.find(user => user.id === id);
+  },
   getPets() {
     return apiClient.get('/pets');
   },

@@ -2,9 +2,9 @@
   <v-app-bar>
     <v-app-bar-nav-icon @click.prevent="$emit('toggle')" />
     <v-app-bar-title>
-      <RouterLink class="text-primary font-weight-bold d-flex align-center" to="/">
+      <RouterLink class="text-primary d-flex align-center" to="/">
         <v-icon :icon="mdiPaw" class="me-2"></v-icon>
-        <span>Application</span>
+        <span class="font-weight-bold">PetPawPal</span>
       </RouterLink>
     </v-app-bar-title>
   </v-app-bar>
