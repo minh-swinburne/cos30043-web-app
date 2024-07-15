@@ -1,7 +1,7 @@
 <template>
   <BaseCard
     :image="post.raw.imageUrl"
-    :imgLink="link"
+    :imgLink="link" target="_blank"
     imgPos="bottom"
     elevation="5"
   >
@@ -88,7 +88,7 @@ const userStore = useUserStore()
 const { id } = storeToRefs(userStore)
 // console.log(id.value)
 
-const link = ref('/posts/' + $props.post.raw.id)
+const link = ref('/post/' + $props.post.raw.id)
 const author = ref({})
 
 

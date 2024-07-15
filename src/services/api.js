@@ -9,12 +9,9 @@ const apiClient = axios.create({
 });
 
 export default {
-  async getPosts(source, limit=0) {
-    const params = {}
-    if (limit > 0) {
-      params.per_page = limit
-    }
-    return apiClient.get(source, { params }).then(await new Promise( (resolve) => {setTimeout(resolve, 1000)}));
+  async getPosts(source, params={}) {
+    // console.log(params);
+    return apiClient.get(source, { params: params }).then(await new Promise( (resolve) => {setTimeout(resolve, 1000)}));
     // setTimeout(() => {
     //   return response.data;
     // }, 1000);

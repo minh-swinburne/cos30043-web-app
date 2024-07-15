@@ -6,7 +6,7 @@
   >
     <template #media>
       <slot name="media">
-        <v-img src="paw.svg" height="400"></v-img>
+        <v-img src="error.png" height="300"></v-img>
       </slot>
     </template>
 

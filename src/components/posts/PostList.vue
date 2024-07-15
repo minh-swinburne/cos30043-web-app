@@ -10,7 +10,7 @@
           {{ name }}
         </div>
 
-        <div class="d-flex align-center" v-if="!sm">
+        <div class="d-flex align-center" v-if="!smAndDown">
           <SeeAllButton :source="source" />
         </div>
       </h1>
@@ -33,10 +33,7 @@
       </v-container>
     </template>
 
-    <template
-      v-if="!sm"
-      #footer="{ page, pageCount, prevPage, nextPage }"
-    >
+    <template #footer="{ page, pageCount, prevPage, nextPage }">
       <div class="d-flex align-center justify-center pa-4">
         <v-btn
           :disabled="page === 1"
@@ -58,10 +55,11 @@
           @click="nextPage"
         ></v-btn>
       </div>
-    </template>
 
-    <template #footer v-else>
-      <div class="d-flex align-center justify-center pa-4">
+      <div 
+        v-if="smAndDown" 
+        class="d-flex align-center justify-center pa-4"
+      >
         <SeeAllButton :source="source" />
       </div>
     </template>
@@ -107,22 +105,27 @@ const $props = defineProps({
 })
 
 // 960, 1280, and 1920 breakpoints
-const { sm, md, lg, xlAndUp } = useDisplay()
+const { smAndDown, md, lg } = useDisplay()
+// console.log(smAndDown.value, md.value, lg.value, xlAndUp.value)
 const posts = ref([])
 const loading = ref(true)
 
 const itemsPerPage = computed(() => {
+  if (smAndDown.value) {
+    return 1
+  }
   if (md.value) {
     return 2
   }
-  if (xlAndUp.value) {
-    return 4
+  if (lg.value) {
+    return 3
   }
-  return 3
+  return 4
 })
 
-apiClient.getPosts($props.source, sm.value ? 2 : 0)
+apiClient.getPosts($props.source)
 .then(response => {
+  console.log(response.data.length)
   posts.value = response.data
   loading.value = false
 })

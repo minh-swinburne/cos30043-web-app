@@ -36,7 +36,7 @@ apiClient.getUser(0)
 .then(response => {
   let user = response.data[0]
   userStore.setUser(user)
-  console.log(userStore.bookmarks)
+  // console.log(userStore.bookmarks)
 })
 
 // userStore.setUser({ 

@@ -16,6 +16,13 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
+
+const $props = defineProps({
+  post: {
+    type: Object,
+    default: () => ({}),
+  },
+})
 </script>
 
 <style scoped>

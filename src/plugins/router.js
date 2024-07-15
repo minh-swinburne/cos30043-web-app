@@ -34,7 +34,7 @@ const router = createRouter({
         {
           path: 'post/:id',
           name: 'post',
-          component: () => import('@/views/Main/Post/PostView'),
+          component: () => import('@/views/Main/Post/PostReadView'),
         },
         {
           path: 'pets',
@@ -97,7 +97,7 @@ const router = createRouter({
     },
     {
       path: '/:catchAll(.*)',
-      redirect: '/404'
+      redirect: '/404?'
     }
   ]
 })

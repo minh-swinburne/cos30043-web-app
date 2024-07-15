@@ -23,4 +23,4 @@ window.addEventListener('online', () => {
 })
 
 // Call the service worker registration function
-registerServiceWorker();
+// registerServiceWorker();

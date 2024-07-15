@@ -8,7 +8,16 @@
       <v-col cols="12">
         <PostList 
           name="Recommended" 
-          :source="testUrl"
+          :source="recommendedUrl"
+          @fail="failed = true"
+        />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <PostList 
+          name="BBC News" 
+          :source="bbcUrl"
           @fail="failed = true"
         />
       </v-col>
@@ -18,11 +27,11 @@
   <AppEmptyState
     v-else
     headline="Something went wrong"
-    title="Failed to fetch data"
+    title="Failed to fetch posts"
     text="Please try again later"
   >
     <template #media>
-      <v-img src="error.png" height="400"></v-img>
+      <v-img src="error.png" height="300"></v-img>
     </template>
   </AppEmptyState>
 </template>
@@ -34,11 +43,12 @@ import AppEmptyState from '@/components/AppEmptyState'
 
 const failed = ref(false)
 
-const recommendedUrl = ref('https://newsapi.org/v2/everything?' +
-  'q=Apple&' +
-  'from=2024-06-14&' +
-  'sortBy=popularity&' +
-  'apiKey=f47fe6119dfc4592ae04366502ae2ffd'
-  )
-const testUrl = '/posts.json'
+// const recommendedUrl = ref('https://newsapi.org/v2/everything?' +
+//   'q=Apple&' +
+//   'from=2024-06-14&' +
+//   'sortBy=popularity&' +
+//   'apiKey=f47fe6119dfc4592ae04366502ae2ffd'
+//   )
+const recommendedUrl = '/posts.json' // Use this URL for now
+const bbcUrl = '/posts_2.json'
 </script>

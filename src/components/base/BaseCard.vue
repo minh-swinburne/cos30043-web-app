@@ -1,6 +1,6 @@
 <template>
   <v-card variant="elevated" border>
-    <RouterLink :to="imgLink">
+    <RouterLink :to="imgLink" :target="target">
       <v-img 
         v-if="image && imgPos === 'top'"
         :src="image"
@@ -27,7 +27,7 @@
       <slot name="content"></slot>
     </v-card-text>
 
-    <RouterLink :to="imgLink" class="pa-0">
+    <RouterLink :to="imgLink" :target="target" class="pa-0">
       <v-img 
         v-if="image && imgPos === 'bottom'"
         :src="image"
@@ -58,6 +58,10 @@ const $props = defineProps({
     default: 'top'
   },
   imgLink: {
+    type: String,
+    default: ''
+  },
+  target: {
     type: String,
     default: ''
   },

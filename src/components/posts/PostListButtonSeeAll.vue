@@ -22,5 +22,5 @@ const $props = defineProps({
   },
 })
 
-console.log($props.source)
+// console.log($props.source)
 </script>
