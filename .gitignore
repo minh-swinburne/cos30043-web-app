@@ -31,6 +31,6 @@ coverage
 
 *.tsbuildinfo
 
-# Firebase cache
-.firebase/
-.github/
+# cache
+.github
+.vercel

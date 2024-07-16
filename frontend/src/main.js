@@ -6,7 +6,6 @@ import App from './App.vue'
 import store from './plugins/store'
 import router from './plugins/router'
 import vuetify from './plugins/vuetify'
-import firebase from './plugins/firebase'
 
 import { registerServiceWorker } from './services/serviceWorker'
 
@@ -24,3 +23,5 @@ window.addEventListener('online', () => {
 
 // Call the service worker registration function
 // registerServiceWorker();
+
+console.log('Hello from main.js')
