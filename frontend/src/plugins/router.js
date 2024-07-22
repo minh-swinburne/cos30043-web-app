@@ -28,13 +28,31 @@ const router = createRouter({
         },
         {
           path: 'posts',
-          component: () => import('@/views/Main/Post/PostsFeedView'),
-          meta: { title: 'Posts' },
-        },
-        {
-          path: 'post/:id',
-          name: 'post',
-          component: () => import('@/views/Main/Post/PostReadView'),
+          children: [
+            {
+              path: 'feed',
+              name: 'post-feed',
+              component: () => import('@/views/Main/Post/PostsFeedView'),
+              meta: { title: 'Posts Feed' },
+            },
+            {
+              path: 'create',
+              name: 'post-create',
+              component: () => import('@/views/Main/Post/PostCreateView'),
+              meta: { title: 'Create Post' },
+            },
+            {
+              path: ':id',
+              children: [
+                {
+                  path: 'read',
+                  name: 'post-read',
+                  component: () => import('@/views/Main/Post/PostReadView'),
+                  props: route => ({ id: Number(route.params.id) }),
+                }
+              ]
+            }
+          ],
         },
         {
           path: 'pets',
@@ -65,16 +83,28 @@ const router = createRouter({
       component: () => import('@/views/Authentication'),
       children: [
         {
-          path: '/register',
+          path: 'register',
           name: 'register',
           component: () => import('@/views/Authentication/RegisterView'),
           meta: { title: 'Register' },
         },
         {
-          path: '/login',
+          path: 'login',
           name: 'login',
           component: () => import('@/views/Authentication/LoginView'),
           meta: { title: 'Login' },
+        },
+        {
+          path: 'logout',
+          name: 'logout',
+          component: () => import('@/views/Authentication/LogoutView'),
+          meta: { title: 'Logout' },
+        },
+        {
+          path: 'forgot-password',
+          name: 'forgot-password',
+          component: () => import('@/views/Authentication/ForgotPasswordView'),
+          meta: { title: 'Forgot Password' },
         },
       ]
     },

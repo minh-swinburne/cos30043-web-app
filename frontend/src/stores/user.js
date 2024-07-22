@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
 
-export const useUserStore = defineStore({
-  id: 'user',
+export const useUserStore = defineStore('user', {
   state: () => ({
     id: null,
     username: '',
     firstname: '',
     lastname: '',
+    email: '',
+    pfp: '@/assets/default-pfp.png',
     bookmarks: [],
   }),
   getters: {

@@ -1,41 +1,29 @@
 <template>
-  <v-main>
-    <v-container>
-      <v-row>
-        <v-col cols="12">
-          <v-card>
-            <v-card-title>Sign Up</v-card-title>
-            <v-card-text>
-              <v-form @submit.prevent="signup">
-                <v-text-field
-                  v-model="email"
-                  label="Email"
-                  required
-                ></v-text-field>
-                <v-text-field
-                  v-model="password"
-                  label="Password"
-                  type="password"
-                  required
-                ></v-text-field>
-                <v-btn type="submit">Sign Up</v-btn>
-              </v-form>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-main>
+  <v-container class="pt-10">
+    <v-row no-gutters>
+      <v-col>
+        <RouterLink to="/home" class="text-primary d-flex flex-column align-center">
+          <v-icon :icon="mdiPaw" size="100"></v-icon>
+          <h1 class="text-center mt-n3">{{ websiteName }}</h1>
+        </RouterLink>
+      </v-col>
+    </v-row>
+    <v-row no-gutters class="my-10">
+      <RouterView />
+    </v-row>
+  </v-container>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, inject, onMounted } from 'vue'
+import { RouterLink, RouterView } from 'vue-router'
+import { mdiPaw } from '@mdi/js'
 
-const email = ref('')
-const password = ref('')
-const $router = useRouter()
+const websiteName = inject('websiteName')
 </script>
 
 <style scoped>
+.v-row:first-child {
+  top: 3rem;
+}
 </style>

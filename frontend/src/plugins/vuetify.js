@@ -27,6 +27,7 @@ const vuetify = createVuetify({
       light: {
         dark: false,
         colors: {
+          // background: colors.grey.lighten5,
           // primary: colors.deepPurple.base,
           // secondary: colors.deepOrange.darken3,
           // accent: colors.blue.accent3,

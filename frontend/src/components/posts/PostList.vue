@@ -22,10 +22,7 @@
           <v-col
             v-for="post in items"
             :key="post.id"
-            cols="12"
-            xl="3"
-            lg="4"
-            md="6"
+            :cols="12/itemsPerPage"
           >
             <PostListItem :post="post" />
           </v-col>
@@ -125,12 +122,12 @@ const itemsPerPage = computed(() => {
 
 apiClient.getPosts($props.source)
 .then(response => {
-  console.log(response.data.length)
+  // console.log(response.data)
   posts.value = response.data
   loading.value = false
 })
 .catch((error) => {
-  console.log(error)
+  console.error(error)
   $emit('fail')
 })
 </script>

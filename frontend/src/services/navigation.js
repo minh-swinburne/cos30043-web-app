@@ -1,6 +1,7 @@
 import { 
   mdiHome, mdiTools, mdiCheck, mdiClose, 
-  mdiPost, mdiAlert, mdiPaw, mdiConnection
+  mdiPost, mdiAlert, mdiPaw, mdiConnection,
+  mdiBulletinBoard, mdiTextBoxPlus
 } from '@mdi/js'
 
 const navItems = [
@@ -17,8 +18,25 @@ const navItems = [
     value: 2,
     props: {
       prependIcon: mdiPost,
-      to: '/posts',
-    }
+    },
+    children: [
+      {
+        title: 'My Feed',
+        value: 10,
+        props: {
+          prependIcon: mdiBulletinBoard,
+          to: '/posts/feed',
+        }
+      },
+      {
+        title: 'Create Post',
+        value: 11,
+        props: {
+          prependIcon: mdiTextBoxPlus,
+          to: '/posts/create',
+        }
+      }
+    ]
   },
   {
     title: 'Pets',

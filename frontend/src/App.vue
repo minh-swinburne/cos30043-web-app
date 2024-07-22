@@ -1,10 +1,6 @@
 <template>
   <Suspense>
     <v-app class="pa-0 px-md-5 px-lg-10">
-      <!-- <AppAlert
-        message="Alert!"
-        :timeout="0"
-      /> -->
       <RouterView />
       <v-btn 
         @click="toggleTheme" 

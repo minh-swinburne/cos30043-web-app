@@ -2,11 +2,12 @@
   <v-navigation-drawer
     :model-value="showing"
     :rail="!(expanded || mobile)"
-    elevation="5"
+    elevation="2"
   >
     <v-list 
       nav slim 
       :items="items"
+      :activated="opened"
       :opened="opened"
       active-class="text-primary"
       @click:open="$emit('open')">

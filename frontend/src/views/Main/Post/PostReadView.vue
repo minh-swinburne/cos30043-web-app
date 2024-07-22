@@ -15,14 +15,25 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+// import { useRoute } from 'vue-router'
+import apiClient from '@/services/api'
 
 const $props = defineProps({
-  post: {
-    type: Object,
-    default: () => ({}),
+  id: {
+    type: Number,
+    required: true,
   },
 })
+
+const post = ref({})
+apiClient.getPost($props.id)
+  .then(response => {
+    post.value = response
+    console.log(post.value)
+  })
+  .catch(error => {
+    console.error(error)
+  })
 </script>
 
 <style scoped>

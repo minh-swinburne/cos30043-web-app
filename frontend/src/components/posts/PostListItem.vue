@@ -26,7 +26,7 @@
         <v-spacer></v-spacer>
         <v-btn
           variant="flat"
-          color="blue-darken-2"
+          color="primary"
           :to="link" target="_blank"
           :append-icon="mdiOpenInNew"
         >
@@ -88,7 +88,7 @@ const userStore = useUserStore()
 const { id } = storeToRefs(userStore)
 // console.log(id.value)
 
-const link = ref('/post/' + $props.post.raw.id)
+const link = ref('/posts/' + $props.post.raw.id + '/read')
 const author = ref({})
 
 

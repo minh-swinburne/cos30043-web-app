@@ -14,8 +14,6 @@ const ROOT_DIR = path.resolve(__dirname, '../../frontend/dist');
 
 app.use(express.static(ROOT_DIR));
 
-app.get("/", (req, res) => res.sendFile(path.join(ROOT_DIR, 'index.html')));
-
 app.get('/api/hello', (req, res) => {
   res.send('Hello from Express on Vercel!');
 });
@@ -23,6 +21,8 @@ app.get('/api/hello', (req, res) => {
 app.get('/api/posts/:id', (req, res) => {
   res.send(`Post ${req.params.id}`);
 });
+
+app.get("*", (req, res) => res.sendFile(path.join(ROOT_DIR, 'index.html')));
 
 app.listen(port, () => console.log(`Server ready on port ${port}.`));
 
