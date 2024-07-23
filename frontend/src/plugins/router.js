@@ -134,9 +134,9 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   // console.log('from:', from, 'to:', to)
-  if (!navigator.onLine && to.name !== 'offline') {
-    return '/offline'
-  }
+  // if (!navigator.onLine && to.name !== 'offline') {
+  //   return '/offline'
+  // }
   const userStore = useUserStore()
 
   if (to.meta.requiresAuth && !userStore.id) return '/login'

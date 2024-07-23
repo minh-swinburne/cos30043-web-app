@@ -35,6 +35,10 @@ apiClient.getUser(0)
   // console.log(userStore.bookmarks)
 })
 
+// fetch('/api/users')
+// .then(response => console.log(response))
+// .catch(error => console.log(error))
+
 // userStore.setUser({ 
 //   id: 0,
 //   username: 'niceguy_123',

@@ -19,9 +19,10 @@ export default defineConfig({
         target: 'http://localhost:3000',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '')
-      }, // Proxy API requests to Express server
-    }
+      } // Proxy API requests to Express server
+    },
   },
+
   build: {
     outDir: 'dist',
   },

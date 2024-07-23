@@ -21,5 +21,5 @@
       "dest": "/frontend/dist/$1"
     }
   ],
-  "devCommand": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\""
+  "devCommand": "cd frontend && npm run dev"
 }

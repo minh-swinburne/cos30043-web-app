@@ -2,7 +2,8 @@ import { set } from '@vueuse/core'
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: '/src/data',
+  // baseURL: '/src/data',
+  baseURL: '/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -11,8 +12,24 @@ const apiClient = axios.create({
 export default {
   instance: apiClient,
 
-  login(credentials) {
-    return apiClient.post('/login', credentials)
+  async login(credentials) {
+    // return apiClient.post('/login', credentials)
+    // console.log(credentials)
+    let response = await apiClient.get('/users', {
+      params: {
+        username: credentials.account
+      }
+    })
+    if (!response.data) {
+      response = await apiClient.get('/users', {
+        params: {
+          email: credentials.account
+        }
+      })
+    }
+    if (!response.data) {
+      return 404 // user not found
+    }
   },
 
   setToken(token) {
@@ -33,13 +50,18 @@ export default {
   async getPost(id) {
     // correct api call doesn't need async/await
     // return apiClient.get(`/posts/${id}`);
-    const response = await apiClient.get(`/posts.json`);
+    const response = await apiClient.get(`/posts`);
     return response.data.find(post => post.id === id);
+  },
+
+  async getPostComments(postId) {
+    const response = await apiClient.get('/comments');
+    return response.data.find(comment => comment.postId === postId)
   },
 
   getUser(id) {
     // return apiClient.get(`/users/${id}`);
-    return apiClient.get('/users.json', {
+    return apiClient.get('/users', {
       params: {
         id,
       },

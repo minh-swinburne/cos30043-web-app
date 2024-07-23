@@ -49,6 +49,6 @@ const failed = ref(false)
 //   'sortBy=popularity&' +
 //   'apiKey=f47fe6119dfc4592ae04366502ae2ffd'
 //   )
-const recommendedUrl = '/posts.json' // Use this URL for now
-const bbcUrl = '/posts_2.json'
+const recommendedUrl = '/posts' // Use this URL for now
+const bbcUrl = '/posts'
 </script>

@@ -53,7 +53,7 @@
         :post="post.raw"
         size="large"
       >
-        {{ post.raw.comments.length }}
+        {{ post.raw.commentCount }}
       </PostComment>
       
       <v-spacer></v-spacer>

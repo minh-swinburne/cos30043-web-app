@@ -68,7 +68,7 @@ watch(() => $props.expanded, (expanded) => {
 })
 </script>
 
-<style scoped>
+<style>
 .v-navigation-drawer {
   transition:
     width 0.2s,
@@ -77,5 +77,9 @@ watch(() => $props.expanded, (expanded) => {
 }
 .v-navigation-drawer--rail {
   width: 64px !important;
+}
+
+.v-list-item-title {
+  font-size: 1rem !important;
 }
 </style>

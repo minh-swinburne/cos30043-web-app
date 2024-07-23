@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pt-10">
+  <v-container class="pt-5 pt-xl-10">
     <v-row no-gutters>
       <v-col>
         <RouterLink to="/home" class="text-primary d-flex flex-column align-center">
@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { ref, inject, onMounted } from 'vue'
+import { inject } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import { mdiPaw } from '@mdi/js'
 
