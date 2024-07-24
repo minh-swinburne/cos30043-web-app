@@ -97,7 +97,10 @@ const router = createRouter({
           path: 'logout',
           name: 'logout',
           component: () => import('@/views/Authentication/LogoutView'),
-          meta: { title: 'Logout' },
+          meta: { 
+            title: 'Logout',
+            requiresAuth: true,
+          },
         },
         {
           path: 'forgot-password',

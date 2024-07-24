@@ -34,7 +34,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-col cols="auto" class="d-flex justify-end pe-2">
+      <v-col class="d-flex justify-end pe-2">
         <UserMenu />
       </v-col>
     </v-row>
@@ -43,8 +43,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
-import { useAuthStore } from '@/stores'
+import { RouterLink } from 'vue-router'
 
 import UserMenu from '@/components/AppBarUserMenu'
 

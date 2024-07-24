@@ -23,7 +23,10 @@ export const useAuthStore = defineStore('auth', {
       try {
         const response = await apiClient.login(credentials)
         if (response.status !== 200) {
-          throw new Error(response.message)
+          return {
+            success: false,
+            message: response.message,
+          }
         }
         const token = response.data.token
         this.$patch({
@@ -44,18 +47,20 @@ export const useAuthStore = defineStore('auth', {
           sessionStorage.setItem('expires', response.data.expires)
         }
         apiClient.setToken(token)
-        return true // Return true if login is successful
+        return {
+          success: true,
+          message: 'Logged in successfully',
+        }
       } catch (error) {
         console.error('Error logging: ', error)
-        return false // Return false if login fails
+        return {
+          success: false,
+          message: 'An error occurred while logging in. Please try again later.',
+        }
       }
     },
     
     logout() {
-      // this.token = ''
-      // this.refreshToken = ''
-      // this.expires = 0
-      // this.user = null
       this.$reset()
     },
   },

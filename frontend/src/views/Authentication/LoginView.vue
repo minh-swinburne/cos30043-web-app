@@ -1,14 +1,12 @@
 <template>
   <v-container class="pa-0">
-    <v-row no-gutters class="mt-n5 mb-5">
-      <BackButton />
-    </v-row>
     <v-row no-gutters>
       <v-col cols="12" md="6" lg="5" class="d-flex flex-column justify-center pe-md-10">
         <v-card elevation="5">
           <v-card-title class="my-3 text-center">
             Login
           </v-card-title>
+
           <v-card-text>
             <v-form @submit.prevent="login">
               <v-text-field
@@ -17,6 +15,7 @@
                 label="Email / Username"
                 type="text"
                 color="primary"
+                autocomplete="username"
                 required
               ></v-text-field>
 
@@ -27,6 +26,7 @@
                 :type="showPassword ? 'text' : 'password'"
                 label="Password"
                 color="primary"
+                autocomplete="current-password"
                 required
                 @click:append-inner="showPassword = !showPassword"
               ></v-text-field>
@@ -52,7 +52,10 @@
 
         <v-row no-gutters class="pa-1 mt-5 align-center flex-0-1">
           Not a member yet?&thinsp;
-          <RouterLink to="/auth/register" class="text-primary">
+          <RouterLink 
+            :to="{ path: '/auth/register', query: { redirect: $router.currentRoute.value.query.redirect } }" 
+            class="text-primary"
+          >
             Sign Up
           </RouterLink>
 
@@ -64,7 +67,7 @@
 
       <v-col cols="12" md="6" lg="7" class="ps-md-5">
         <v-img
-          src="/adopt.png"
+          src="/login.png"
           alt="Login Image"
           class="px-lg-5 px-xl-15"
         ></v-img>
@@ -79,26 +82,27 @@ import { useRouter, RouterLink } from 'vue-router'
 import { useAuthStore } from '@/stores'
 import { mdiAccount, mdiLock, mdiEye, mdiEyeOff } from '@mdi/js'
 
-import BackButton from '@/components/buttons/ButtonBack.vue'
+// import BackButton from '@/components/buttons/ButtonBack.vue'
 
 const account = ref('')
 const password = ref('')
 const showPassword = ref(false)
 const remember = ref(false)
 
-const router = useRouter()
+const $router = useRouter()
 
 function login() {
   const authStore = useAuthStore()
-  const result = authStore.login({
+  authStore.login({
     account: account.value,
     password: password.value,
     remember: remember.value
   })
-  if (result) {
-    const redirect = router.currentRoute.value.query.redirect || '/home'
-    router.push(redirect)
-  }
+    .then(result => {
+      if (result.success) {
+        $router.push($router.currentRoute.value.query.redirect)
+      }
+    })
 }
 </script>
 

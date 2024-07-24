@@ -10,14 +10,25 @@
         variant="tonal"
         icon border
       >
-        <v-avatar color="primary">
-          <v-img v-if="authStore.user?.pfp" :src="authStore.user.avatar"></v-img>
-          <v-icon v-else :icon="mdiAccount"></v-icon>
-        </v-avatar>
+        <UserAvatar />
       </v-btn>
     </template>
 
     <v-list>
+      <v-list-item class="px-10 py-5">
+        <v-list-item-media class="d-flex justify-center mb-3">
+          <UserAvatar size="75" />
+        </v-list-item-media>
+        <v-list-item-title class="text-center text-h5">
+          {{ authStore.userFullName }}
+        </v-list-item-title>
+        <v-list-item-subtitle class="text-center">
+          {{ authStore.user?.username }}
+        </v-list-item-subtitle>
+      </v-list-item>
+
+      <v-divider class="py-1"></v-divider>
+
       <v-list-item
         v-for="(item, index) in items"
         :key="index"
@@ -52,9 +63,10 @@
 
 <script setup>
 import { ref } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useAuthStore } from '@/stores'
 
+import UserAvatar from '@/components/AppUserAvatar.vue'
 import { mdiAccount, mdiLogin, mdiLogout } from '@mdi/js'
 
 const $route = useRoute()
