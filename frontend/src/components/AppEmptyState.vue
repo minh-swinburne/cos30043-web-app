@@ -12,43 +12,21 @@
 
     <template #actions>
       <slot name="actions">
-        <v-btn
-          v-if="$props.goBackButton"
-          @click="goBack" 
-          :prepend-icon="mdiArrowLeft"
-          variant="text"
-        >
-          Go Back
-        </v-btn>
+        <ButtonBack v-if="$props.goBackButton" />
 
-        <v-btn
-          v-if="$props.retryButton"
-          @click="retry" 
-          :prepend-icon="mdiRefresh"
-          variant="text"
-        >
-          Retry
-        </v-btn>
+        <ButtonRetry v-if="$props.retryButton" />
 
-        <v-btn
-          v-if="$props.goHomeButton"
-          @click="goHome" 
-          :prepend-icon="mdiHome"
-          color="primary"
-        >
-          Home
-        </v-btn>
+        <ButtonHome v-if="$props.goHomeButton" />
       </slot>
     </template>
   </v-empty-state>
 </template>
 
 <script setup>
-import { useRouter, useRoute } from 'vue-router'
-import { mdiArrowLeft, mdiHome, mdiRefresh } from '@mdi/js'
+import ButtonBack from '@/components/buttons/ButtonBack.vue'
+import ButtonRetry from '@/components/buttons/ButtonRetry.vue'
+import ButtonHome from '@/components/buttons/ButtonHome.vue'
 
-const $router = useRouter()
-const $route = useRoute()
 const $props = defineProps({
   retryButton: {
     type: Boolean,
@@ -63,16 +41,4 @@ const $props = defineProps({
     default: true
   }
 })
-
-function retry() {
-  $router.go($route.path)
-}
-
-function goBack() {
-  $router.go(-1)
-}
-
-function goHome() {
-  $router.push('/home')
-}
 </script>

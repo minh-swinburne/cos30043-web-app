@@ -38,16 +38,10 @@ const user = authStore.user
 // const score = ref($props.post.score)
 
 const upvoted = computed(() => {
-  if (!user) {
-    return false
-  }
-  return $props.post.votes.some(vote => vote.user === user.id && vote.type === 'upvote')
+  return $props.post.votes.some(vote => vote.user === user?.id && vote.type === 'upvote')
 })
 const downvoted = computed(() => {
-  if (!user) {
-    return false
-  }
-  return $props.post.votes.some(vote => vote.user === user.id && vote.type === 'downvote')
+  return $props.post.votes.some(vote => vote.user === user?.id && vote.type === 'downvote')
 })
 
 function clearVote() {

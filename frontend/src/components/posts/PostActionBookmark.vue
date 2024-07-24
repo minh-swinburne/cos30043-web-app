@@ -13,7 +13,6 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import apiClient from '@/services/api'
 import { useAuthStore } from '@/stores'
 
 import { mdiBookmark, mdiBookmarkOutline } from '@mdi/js'
@@ -25,11 +24,10 @@ const $props = defineProps({
   }
 })
 
-const authStore = useAuthStore()
-const user = authStore.user
+const user = useAuthStore().user
 
 const isBookmarked = computed(() => {
-  return user.bookmarks.includes($props.post.id)
+  return user?.bookmarks.includes($props.post.id)
 })
 
 function toggleBookmark() {

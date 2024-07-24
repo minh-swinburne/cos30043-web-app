@@ -56,7 +56,7 @@ function darkTheme() {
 }
 
 function toggleTheme() {
-  console.log(theme.value.global);
+  // console.log(theme.value.global);
   theme.value.global.name = darkTheme() ? 'light' : 'dark'
   updateTheme();
 }

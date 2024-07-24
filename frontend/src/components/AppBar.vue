@@ -34,40 +34,8 @@
 
       <v-spacer></v-spacer>
 
-      <v-col class="d-flex justify-end pe-2">
-        <v-menu
-          v-if="authStore.isAuthenticated"
-          v-model="menu"
-          :close-on-content-click="false"
-        >
-          <template #activator="{ props }">
-            <v-btn
-              color="primary"
-              variant="elevated"
-              v-bind="props"
-            >
-              {{ authStore.userFullName }}
-            </v-btn>
-          </template>
-        </v-menu>
-
-        <v-row v-else class="justify-end me-2 ga-3 flex-nowrap">
-          <v-btn
-            color="primary"
-            to="/auth/register"
-            variant="text"
-          >
-            <span class="font-weight-bold">Sign Up</span>
-          </v-btn>
-          <v-btn
-            :append-icon="mdiLogin"
-            color="primary"
-            :to="{ path: '/auth/login', query: { redirect: $route.fullPath } }"
-            variant="elevated"
-          >
-            <span class="font-weight-bold">Login</span>
-          </v-btn>
-        </v-row>
+      <v-col cols="auto" class="d-flex justify-end pe-2">
+        <UserMenu />
       </v-col>
     </v-row>
   </v-app-bar>
@@ -78,10 +46,9 @@ import { ref } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useAuthStore } from '@/stores'
 
-import { mdiPaw, mdiMagnify, mdiLogin, mdiLogout } from '@mdi/js'
+import UserMenu from '@/components/AppBarUserMenu'
 
-const authStore = useAuthStore()
-const $route = useRoute()
+import { mdiPaw, mdiMagnify } from '@mdi/js'
 
 const searchString = ref('')
 const searchTypes = ref([
@@ -91,7 +58,6 @@ const searchTypes = ref([
 ])
 
 const loading = ref(false)
-const menu = ref(false)
 
 function search() {
   loading.value = true

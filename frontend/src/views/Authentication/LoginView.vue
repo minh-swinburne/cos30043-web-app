@@ -1,5 +1,8 @@
 <template>
   <v-container class="pa-0">
+    <v-row no-gutters class="mt-n5 mb-5">
+      <BackButton />
+    </v-row>
     <v-row no-gutters>
       <v-col cols="12" md="6" lg="5" class="d-flex flex-column justify-center pe-md-10">
         <v-card elevation="5">
@@ -61,7 +64,7 @@
 
       <v-col cols="12" md="6" lg="7" class="ps-md-5">
         <v-img
-          src="/pets.png"
+          src="/adopt.png"
           alt="Login Image"
           class="px-lg-5 px-xl-15"
         ></v-img>
@@ -73,10 +76,10 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
-import apiClient from '@/services/api'
-import { useAuthStore } from '@/stores/auth'
-
+import { useAuthStore } from '@/stores'
 import { mdiAccount, mdiLock, mdiEye, mdiEyeOff } from '@mdi/js'
+
+import BackButton from '@/components/buttons/ButtonBack.vue'
 
 const account = ref('')
 const password = ref('')
