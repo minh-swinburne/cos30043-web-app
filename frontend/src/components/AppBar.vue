@@ -13,7 +13,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-col lg="4" cols="6">
+      <v-col v-if="!mobile" lg="4" cols="6">
         <v-form>
           <v-text-field
             v-model="searchString"
@@ -44,10 +44,13 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import { useDisplay } from 'vuetify'
 
 import UserMenu from '@/components/AppBarUserMenu'
 
 import { mdiPaw, mdiMagnify } from '@mdi/js'
+
+const { mobile } = useDisplay()
 
 const searchString = ref('')
 const searchTypes = ref([
