@@ -19,8 +19,7 @@
 
 <script setup>
 import { ref, computed, watch } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useUserStore } from '@/stores/user'
+import { useAuthStore } from '@/stores'
 
 import { mdiArrowUpBold, mdiArrowUpBoldOutline, mdiArrowDownBold, mdiArrowDownBoldOutline } from '@mdi/js'
 
@@ -31,22 +30,29 @@ const $props = defineProps({
   }
 })
 
-const userStore = useUserStore()
-const { id } = storeToRefs(userStore)
+const authStore = useAuthStore()
+const user = authStore.user
+// console.log($props.post)
 
 // const votes = ref($props.post.votes)
 // const score = ref($props.post.score)
 
 const upvoted = computed(() => {
-  return $props.post.votes.some(vote => vote.user === id.value && vote.type === 'upvote')
+  if (!user) {
+    return false
+  }
+  return $props.post.votes.some(vote => vote.user === user.id && vote.type === 'upvote')
 })
 const downvoted = computed(() => {
-  return $props.post.votes.some(vote => vote.user === id.value && vote.type === 'downvote')
+  if (!user) {
+    return false
+  }
+  return $props.post.votes.some(vote => vote.user === user.id && vote.type === 'downvote')
 })
 
 function clearVote() {
   // console.log('clearing vote')
-  const index = $props.post.votes.findIndex(vote => vote.user === id.value)
+  const index = $props.post.votes.findIndex(vote => vote.user === user.id)
   if (index === -1) {
     return 0
   }
@@ -67,7 +73,7 @@ function upvote() {
   }
   $props.post.score += 1
   $props.post.votes.push({
-    user: id.value,
+    user: user.id,
     type: 'upvote'
   })
 }
@@ -79,7 +85,7 @@ function downvote() {
   }
   $props.post.score -= 1
   $props.post.votes.push({
-    user: id.value,
+    user: user.id,
     type: 'downvote'
   })
 }

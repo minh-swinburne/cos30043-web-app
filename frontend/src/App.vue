@@ -19,21 +19,21 @@ import { ref, computed, provide } from 'vue'
 import { RouterView, useRouter } from 'vue-router'
 import { useTheme } from 'vuetify'
 import apiClient from '@/services/api'
-import { useUserStore } from '@/stores/user'
+import { useAuthStore } from '@/stores'
 // import AppAlert from './components/base/BaseAlert'
 import { mdiWhiteBalanceSunny, mdiWeatherNight } from '@mdi/js'
 
-const userStore = useUserStore()
+const authStore = useAuthStore()
 
 const websiteName = 'PetPawPal'
 provide('websiteName', websiteName)
 
-apiClient.getUser(0)
-.then(response => {
-  let user = response.data[0]
-  userStore.setUser(user)
-  // console.log(userStore.bookmarks)
-})
+// apiClient.getUser(0)
+// .then(response => {
+//   let user = response.data
+//   authStore.setUser(user)
+//   // console.log(response.data)
+// })
 
 // fetch('/api/users')
 // .then(response => console.log(response))

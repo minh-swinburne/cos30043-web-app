@@ -13,7 +13,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-col lg="4">
+      <v-col lg="4" cols="6">
         <v-form>
           <v-text-field
             v-model="searchString"
@@ -36,7 +36,7 @@
 
       <v-col class="d-flex justify-end pe-2">
         <v-menu
-          v-if="userStore.isLoggedIn"
+          v-if="authStore.isAuthenticated"
           v-model="menu"
           :close-on-content-click="false"
         >
@@ -46,12 +46,12 @@
               variant="elevated"
               v-bind="props"
             >
-              {{ userStore.user.name }}
+              {{ authStore.userFullName }}
             </v-btn>
           </template>
         </v-menu>
 
-        <v-row v-else class="justify-end me-2 ga-3">
+        <v-row v-else class="justify-end me-2 ga-3 flex-nowrap">
           <v-btn
             color="primary"
             to="/auth/register"
@@ -62,7 +62,7 @@
           <v-btn
             :append-icon="mdiLogin"
             color="primary"
-            to="/auth/login"
+            :to="{ path: '/auth/login', query: { redirect: $route.fullPath } }"
             variant="elevated"
           >
             <span class="font-weight-bold">Login</span>
@@ -75,15 +75,13 @@
 
 <script setup>
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
-import { useUserStore } from '@/stores/user'
+import { RouterLink, useRoute } from 'vue-router'
+import { useAuthStore } from '@/stores'
 
 import { mdiPaw, mdiMagnify, mdiLogin, mdiLogout } from '@mdi/js'
-import { set } from '@vueuse/core'
 
 const authStore = useAuthStore()
-const userStore = useUserStore()
+const $route = useRoute()
 
 const searchString = ref('')
 const searchTypes = ref([

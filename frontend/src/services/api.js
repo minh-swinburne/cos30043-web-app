@@ -1,5 +1,5 @@
-import { set } from '@vueuse/core'
 import axios from 'axios'
+import { hashSync, compareSync } from 'bcryptjs'
 
 const apiClient = axios.create({
   // baseURL: '/src/data',
@@ -15,20 +15,31 @@ export default {
   async login(credentials) {
     // return apiClient.post('/login', credentials)
     // console.log(credentials)
-    let response = await apiClient.get('/users', {
-      params: {
-        username: credentials.account
+    // mocking
+    let user = (await apiClient.get('/users')).data
+    // console.log(user)
+    if (user.username !== credentials.account && user.email !== credentials.account) {
+      return {
+        status: 404,
+        message: 'User not found'
       }
-    })
-    if (!response.data) {
-      response = await apiClient.get('/users', {
-        params: {
-          email: credentials.account
-        }
-      })
     }
-    if (!response.data) {
-      return 404 // user not found
+    // console.log(hashSync(credentials.password))
+    if (!compareSync(credentials.password, user.password)) {
+      return {
+        status: 401,
+        message: 'Incorrect password'
+      }
+    }
+    console.log('login success')
+    return {
+      status: 200,
+      data: {
+        token: 'token',
+        refreshToken: '',
+        expires: 0,
+        user: user,
+      }
     }
   },
 

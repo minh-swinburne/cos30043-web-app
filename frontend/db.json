@@ -53,9 +53,9 @@
     }
   ],
   "users": {
-    "id": "0",
+    "id": 0,
     "username": "admin",
-    "password": "$2a$12$PlEcK.X4jENxXQrT7F9.tut6qdaXCCgcrV4y5X7jk7gwBWWD2S3bi",
+    "password": "$2a$10$RPhOohwiHV8Guyz7x6VgJebQ7fMKgSbWcPxNzq5Nuj0cYqGx0CMFW",
     "role": "admin",
     "firstname": "Trust Me",
     "lastname": "Bro",

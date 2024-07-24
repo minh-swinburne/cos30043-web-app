@@ -67,7 +67,7 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useUserStore } from '@/stores/user'
+import { useAuthStore } from '@/stores'
 import apiClient from '@/services/api'
 
 import BaseCard from '@/components/base/BaseCard'
@@ -84,8 +84,8 @@ const $props = defineProps({
   }
 })
 
-const userStore = useUserStore()
-const { id } = storeToRefs(userStore)
+const authStore = useAuthStore()
+const user = authStore.user
 // console.log(id.value)
 
 const link = ref('/posts/' + $props.post.raw.id + '/read')
@@ -103,7 +103,7 @@ apiClient.getUser($props.post.raw.author)
   }
 })
 .catch(error => {
-  console.log(error)
+  // console.error(error)
   author.value = {
     id: 0,
     name: 'Trust Me Bro',

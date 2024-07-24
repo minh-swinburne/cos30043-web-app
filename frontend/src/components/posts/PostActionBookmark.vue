@@ -14,11 +14,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import apiClient from '@/services/api'
-import { useUserStore } from '@/stores/user'
+import { useAuthStore } from '@/stores'
 
 import { mdiBookmark, mdiBookmarkOutline } from '@mdi/js'
 
-const userStore = useUserStore()
 const $props = defineProps({
   post: {
     type: Object,
@@ -26,16 +25,19 @@ const $props = defineProps({
   }
 })
 
+const authStore = useAuthStore()
+const user = authStore.user
+
 const isBookmarked = computed(() => {
-  return userStore.bookmarks.includes($props.post.id)
+  return user.bookmarks.includes($props.post.id)
 })
 
 function toggleBookmark() {
   console.log('Toggling bookmark')
   if (isBookmarked.value) {
-    userStore.bookmarks = userStore.bookmarks.filter(id => id !== $props.post.id)
+    user.bookmarks = user.bookmarks.filter(id => id !== $props.post.id)
   } else {
-    userStore.bookmarks.push($props.post.id)
+    user.bookmarks.push($props.post.id)
   }
   // use apiClient to update the bookmark
 }

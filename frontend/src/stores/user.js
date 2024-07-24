@@ -1,3 +1,5 @@
+// not used but kept to refer for user props
+
 import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', {

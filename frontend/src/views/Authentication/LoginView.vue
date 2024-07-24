@@ -74,8 +74,7 @@
 import { ref } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
 import apiClient from '@/services/api'
-import { useUserStore } from '@/stores/user'
-import
+import { useAuthStore } from '@/stores/auth'
 
 import { mdiAccount, mdiLock, mdiEye, mdiEyeOff } from '@mdi/js'
 
@@ -85,18 +84,18 @@ const showPassword = ref(false)
 const remember = ref(false)
 
 const router = useRouter()
-const userStore = useUserStore()
 
 function login() {
-  apiClient.login({
-    account: account.value, 
-    password: password.value
+  const authStore = useAuthStore()
+  const result = authStore.login({
+    account: account.value,
+    password: password.value,
+    remember: remember.value
   })
-    .then(response => {
-      console.log(response)
-      // userStore.setUser(response.data)
-      // router.push('/')
-    })
+  if (result) {
+    const redirect = router.currentRoute.value.query.redirect || '/home'
+    router.push(redirect)
+  }
 }
 </script>
 

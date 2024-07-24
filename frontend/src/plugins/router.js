@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useUserStore } from '@/stores/user'
-import { useMetaStore } from '@/stores/meta'
+import { useAuthStore, useMetaStore } from '@/stores'
 
 import MainView from '@/views/Main'
 import OfflineView from '@/views/Main/OfflineView.vue'
@@ -137,9 +136,9 @@ router.beforeEach((to, from) => {
   // if (!navigator.onLine && to.name !== 'offline') {
   //   return '/offline'
   // }
-  const userStore = useUserStore()
+  const authStore = useAuthStore()
 
-  if (to.meta.requiresAuth && !userStore.id) return '/login'
+  if (to.meta.requiresAuth && !authStore.token) return '/login'
 })
 
 const DEFAULT_TITLE = 'PetPawPal | COS30043 Custom Web Application'
