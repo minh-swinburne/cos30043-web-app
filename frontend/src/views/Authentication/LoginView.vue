@@ -1,6 +1,34 @@
 <template>
   <v-container class="pa-0">
-    <v-row no-gutters>
+    <v-row v-if="authStore.isAuthenticated">
+      <v-col class="d-flex justify-center">
+        <v-card max-width="400" width="100%">
+          <v-card-title class="my-3 text-center">
+            Login
+          </v-card-title>
+          <v-card-subtitle>
+            Wait, {{ authStore.user?.firstname }}...
+          </v-card-subtitle>
+          <v-card-text>
+            <p>You are already logged in. Please go back or log out first.</p>
+          </v-card-text>
+          <v-card-actions class="justify-space-between pa-5">
+            <BackButton />
+
+            <v-btn 
+              :append-icon="mdiLogout"
+              variant="elevated" 
+              color="red"
+              @click="$router.push('/auth/logout')"
+            >
+              Logout
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <v-row v-else no-gutters>
       <v-col cols="12" md="6" lg="5" class="d-flex flex-column justify-center pe-md-10">
         <v-card elevation="5">
           <v-card-title class="my-3 text-center">
@@ -80,9 +108,11 @@
 import { ref } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
 import { useAuthStore } from '@/stores'
-import { mdiAccount, mdiLock, mdiEye, mdiEyeOff } from '@mdi/js'
+import { mdiAccount, mdiLock, mdiEye, mdiEyeOff, mdiLogout } from '@mdi/js'
 
-// import BackButton from '@/components/buttons/ButtonBack.vue'
+import BackButton from '@/components/buttons/ButtonBack.vue'
+
+const authStore = useAuthStore()
 
 const account = ref('')
 const password = ref('')
@@ -92,7 +122,6 @@ const remember = ref(false)
 const $router = useRouter()
 
 function login() {
-  const authStore = useAuthStore()
   authStore.login({
     account: account.value,
     password: password.value,
@@ -100,7 +129,7 @@ function login() {
   })
     .then(result => {
       if (result.success) {
-        $router.push($router.currentRoute.value.query.redirect)
+        $router.push($router.currentRoute.value.query.redirect || '/home')
       }
     })
 }

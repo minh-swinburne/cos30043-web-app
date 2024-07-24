@@ -1,6 +1,34 @@
 <template>
   <v-container class="pa-0">
-    <v-row no-gutters>
+    <v-row v-if="authStore.isAuthenticated">
+      <v-col class="d-flex justify-center">
+        <v-card max-width="400" width="100%">
+          <v-card-title class="my-3 text-center">
+            Login
+          </v-card-title>
+          <v-card-subtitle>
+            Wait, {{ authStore.user?.firstname }}...
+          </v-card-subtitle>
+          <v-card-text>
+            <p>You are currently logged in. Please go back or log out first before registering a new account.</p>
+          </v-card-text>
+          <v-card-actions class="justify-space-between pa-5">
+            <BackButton />
+
+            <v-btn 
+              :append-icon="mdiLogout"
+              variant="elevated" 
+              color="red"
+              @click="$router.push('/auth/logout')"
+            >
+              Logout
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <v-row v-else no-gutters>
       <v-col cols="12" md="6" lg="7" class="pe-md-5">
         <v-img
           src="/register.png"
@@ -77,7 +105,12 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useAuthStore } from '@/stores'
 import { mdiAccount, mdiLock, mdiEye, mdiEyeOff } from '@mdi/js'
+
+import BackButton from '@/components/buttons/ButtonBack.vue'
+
+const authStore = useAuthStore()
 
 const username = ref('')
 const pwd1 = ref('')
@@ -86,7 +119,7 @@ const pwd2 = ref('')
 const showPwd1 = ref(false)
 const showPwd2 = ref(false)
 
-function step_1() {
+function nextPage() {
   console.log('Step 1')
 }
 

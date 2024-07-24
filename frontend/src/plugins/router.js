@@ -141,7 +141,7 @@ router.beforeEach((to, from) => {
   // }
   const authStore = useAuthStore()
 
-  if (to.meta.requiresAuth && !authStore.token) return '/login'
+  if (to.meta.requiresAuth && !authStore.isAuthenticated) return '/auth/login'
 })
 
 const DEFAULT_TITLE = 'PetPawPal | COS30043 Custom Web Application'

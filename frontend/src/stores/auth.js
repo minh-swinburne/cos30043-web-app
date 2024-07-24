@@ -45,6 +45,7 @@ export const useAuthStore = defineStore('auth', {
           sessionStorage.setItem('token', token)
           sessionStorage.setItem('refreshToken', response.data.refreshToken)
           sessionStorage.setItem('expires', response.data.expires)
+          sessionStorage.setItem('user', JSON.stringify(response.data.user))
         }
         apiClient.setToken(token)
         return {
@@ -57,6 +58,17 @@ export const useAuthStore = defineStore('auth', {
           success: false,
           message: 'An error occurred while logging in. Please try again later.',
         }
+      }
+    },
+
+    checkToken() {
+      const token = localStorage.getItem('token') || sessionStorage.getItem('token')
+      if (token) {
+        this.token = token
+        this.refreshToken = localStorage.getItem('refreshToken') || sessionStorage.getItem('refreshToken')
+        this.expires = localStorage.getItem('expires') || sessionStorage.getItem('expires')
+        this.user = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null
+        apiClient.setToken(token)
       }
     },
     

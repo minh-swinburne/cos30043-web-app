@@ -24,6 +24,7 @@ import { useAuthStore } from '@/stores'
 import { mdiWhiteBalanceSunny, mdiWeatherNight } from '@mdi/js'
 
 const authStore = useAuthStore()
+authStore.checkToken()
 
 const websiteName = 'PetPawPal'
 provide('websiteName', websiteName)
