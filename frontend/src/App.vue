@@ -26,9 +26,6 @@ import { mdiWhiteBalanceSunny, mdiWeatherNight } from '@mdi/js'
 const authStore = useAuthStore()
 authStore.checkToken()
 
-const websiteName = 'PetPawPal'
-provide('websiteName', websiteName)
-
 // apiClient.getUser(0)
 // .then(response => {
 //   let user = response.data

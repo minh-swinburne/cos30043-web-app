@@ -17,7 +17,7 @@
     <v-list>
       <v-list-item class="px-10 py-5">
         <v-list-item-media class="d-flex justify-center mb-3">
-          <UserAvatar size="75" />
+          <UserAvatar :size="75" />
         </v-list-item-media>
         <v-list-item-title class="text-center text-h5">
           {{ authStore.userFullName }}

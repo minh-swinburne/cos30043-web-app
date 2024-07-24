@@ -4,7 +4,7 @@
       <v-col>
         <RouterLink to="/home" class="text-primary d-flex flex-column align-center">
           <v-icon :icon="mdiPaw" size="100"></v-icon>
-          <h1 class="text-center mt-n3">{{ websiteName }}</h1>
+          <h1 class="text-center mt-n3">{{ metaStore.title }}</h1>
         </RouterLink>
       </v-col>
     </v-row>
@@ -15,11 +15,11 @@
 </template>
 
 <script setup>
-import { inject } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
+import { useMetaStore } from '@/stores'
 import { mdiPaw } from '@mdi/js'
 
-const websiteName = inject('websiteName')
+const metaStore = useMetaStore()
 </script>
 
 <style scoped>

@@ -15,9 +15,11 @@
 
 <script setup>
 import { ref } from 'vue'
-// import { useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
+import { useMetaStore } from '@/stores'
 import apiClient from '@/services/api'
 
+const $router = useRouter()
 const $props = defineProps({
   id: {
     type: Number,
@@ -25,11 +27,13 @@ const $props = defineProps({
   },
 })
 
+const metaStore = useMetaStore()
 const post = ref({})
+
 apiClient.getPost($props.id)
   .then(response => {
     post.value = response
-    console.log(post.value)
+    document.title = post.value.title + ' | Posts - ' + metaStore.title
   })
   .catch(error => {
     console.error(error)
