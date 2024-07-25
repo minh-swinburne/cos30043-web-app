@@ -62,7 +62,7 @@ export default {
     // correct api call doesn't need async/await
     // return apiClient.get(`/posts/${id}`);
     const response = await apiClient.get(`/posts`);
-    return response.data.find(post => post.id === id);
+    return response.data.find(post => parseInt(post.id) === id);
   },
 
   async getPostComments(postId) {

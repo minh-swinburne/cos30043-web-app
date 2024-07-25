@@ -32,6 +32,7 @@ const post = ref({})
 
 apiClient.getPost($props.id)
   .then(response => {
+    console.log(response)
     post.value = response
     document.title = post.value.title + ' | Posts - ' + metaStore.title
   })

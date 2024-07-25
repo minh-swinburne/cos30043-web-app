@@ -142,4 +142,13 @@ a:hover {
   line-height: 1.425em;
   height: 4.275em;
 }
+
+.v-card {
+  transition: transform .3s, box-shadow .3s;
+}
+
+.v-card:hover {
+  transform: scale(1.05);
+  box-shadow: 3px 2px 25px rgba(2, 129, 255, .03);
+}
 </style>
