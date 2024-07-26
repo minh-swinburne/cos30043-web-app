@@ -38,7 +38,7 @@
       ></v-img>
     </RouterLink>
 
-    <v-card-actions class="px-5 pb-5">
+    <v-card-actions class="mx-auto pb-5">
       <slot name="actions"></slot>
     </v-card-actions>
   </v-card>
@@ -72,5 +72,11 @@ const $props = defineProps({
 a {
   display: block;
   height: auto;
+}
+
+@media (max-width: 320px) {
+  .v-card-actions {
+    padding: 0.5rem !important;
+  }
 }
 </style>

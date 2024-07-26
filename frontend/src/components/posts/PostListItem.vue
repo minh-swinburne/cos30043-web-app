@@ -151,4 +151,10 @@ a:hover {
   transform: scale(1.05);
   box-shadow: 3px 2px 25px rgba(2, 129, 255, .03);
 }
+
+@media (max-width: 600px) {
+  .v-card-actions .v-btn ~ .v-btn:not(.v-btn-toggle .v-btn) {
+    margin-inline-start: 0;
+  }
+}
 </style>

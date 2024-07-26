@@ -15,6 +15,12 @@ a, .theme {
   padding: 3px;
 }
 
+@media (max-width: 320px) {
+  html {
+    font-size: 16px !important;
+  }
+}
+
 /* @media (hover: hover) {
   a:hover {
     background-color: var(--color-link-background);
